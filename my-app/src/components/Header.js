@@ -1,9 +1,14 @@
-import React from "react";
-import { FiChevronDown } from "react-icons/fi";
+import React, { useState } from "react";
+import { FiChevronDown, FiSearch } from "react-icons/fi";
+// import { GrClose } from "react-icons/gr";
+// import ReactDOM from "react-dom";
+import ModalCart from "./ModalCart";
 
 const Header = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   return (
-    <header className="z-[3000] h-16 fixed left-0 w-full top-0">
+    <header className="fixed top-0 left-0 z-[999] w-full h-16 ">
       <div className="py-[10px] bg-[#fff] min-h-[64px] shadow">
         <div className="container w-[1300px]  mr-auto ml-auto relative">
           <div className="flex flex-wrap items-center -ml-4">
@@ -27,7 +32,7 @@ const Header = () => {
                     Trang chủ
                   </a>
                 </li>
-                <li className="px-4 group ">
+                <li className="px-4 transition-all group ">
                   <a
                     href="/"
                     className="text-[#212121] no-underline text-base font-normal hover:text-[#ff6310] "
@@ -168,13 +173,14 @@ const Header = () => {
               </ul>
             </nav>
             {/* group icon */}
-            <div className="px-4 pr-0">
-              <div className="cart-search-login ">
+            <div className="px-4 pr-0 ">
+              <div className=" cart-search-login">
                 <ul className="flex justify-end p-0 list-none">
-                  <li className="align-top w-[40px] flex text-center justify-center items-center">
+                  <li className="align-top w-[40px]  flex text-center justify-center items-center relative">
                     <a
-                      href="/"
-                      className="relative block text-black no-underline"
+                      href="#"
+                      className="relative block text-black no-underline "
+                      onClick={() => setShowSearch(!showSearch)}
                     >
                       {" "}
                       <img
@@ -183,6 +189,44 @@ const Header = () => {
                         className="w-[20px] h-[20px] fill-black max-w-[100%]"
                       />
                     </a>
+                    {showSearch && (
+                      <div className="">
+                        <div
+                          className="fixed inset-0  z-[222] bg-white opacity-0"
+                          onClick={() => setShowSearch(false)}
+                        ></div>
+                        <div className="visible transition-all duration-500  opacity-100 shadow-lg scale-100 w-[482px] absolute top-[42px] -right-[140px] z-[333]  min-w-[280px] rounded text-[#677279]  bg-white  border border-solid  border-[#dfe3e8]">
+                          <span className="absolute left-auto right-36 -top-[10px]  bottom-[3px]  my-0 mx-auto w-[22px] h-[15px]">
+                            <svg viewBox="0 0 20 9" role="presentation">
+                              <path
+                                d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z"
+                                fill="#f6f6f6"
+                              ></path>
+                            </svg>
+                          </span>
+                          <div className="w-full  h-full  max-h-full  overflow-hidden  py-[10px] px-[20px]">
+                            <p className="uppercase  text-lg text-black mb-[10px] py-[6px] px-[10px] text-center border-b border-solid border-[#ededed]">
+                              Tìm kiếm
+                            </p>
+                            <div className="">
+                              <form
+                                action="search "
+                                className="relative p-0  mb-[5px] "
+                              >
+                                <input
+                                  placeholder="Tìm kiếm sản phẩm..."
+                                  type=" text"
+                                  className="bg-[#f5f5f5] text-sm outline-none  border border-solid border-[#ececec] text-[#333333] w-full h-[45px] pr-[55px] pl-[20px] m-0 transition-all "
+                                />
+                                <button className="w-[45px] h-[45px] absolute p-0 top-0 right-0 bg-transparent transition-opacity border-none ">
+                                  <FiSearch size={"25px"} />
+                                </button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </li>
                   <li className="align-top w-[40px] flex text-center justify-center items-center">
                     <a
@@ -213,10 +257,11 @@ const Header = () => {
                       </span>
                     </a>
                   </li>
-                  <li className="align-top w-[40px] flex text-center justify-center items-center">
+                  <li className="align-top w-[40px] relative flex text-center justify-center items-center">
                     <a
-                      href="/"
-                      className="relative block text-black no-underline"
+                      href="#"
+                      className="relative block text-black no-underline group "
+                      onClick={() => setShowModal(true)}
                     >
                       {" "}
                       <img
@@ -227,7 +272,16 @@ const Header = () => {
                       <span className="text-white absolute bg-black w-4 h-4 text-[10px] leading-4 rounded-[50%] text-center -right-2 bottom-3">
                         0
                       </span>
+                      {/* <div className="absolute z-10 hidden px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm group-hover:block dark:bg-gray-700">
+                        hello
+                      </div> */}
                     </a>
+                    <ModalCart
+                      open={showModal}
+                      handleClose={() => {
+                        setShowModal(false);
+                      }}
+                    ></ModalCart>
                   </li>
                 </ul>
               </div>
