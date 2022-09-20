@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { GrNext, GrPrevious } from "react-icons/gr";
+import { BsCartPlus } from "react-icons/bs";
 const Content = () => {
   const settings = {
     infinite: true,
@@ -257,19 +258,12 @@ const Content = () => {
 };
 
 const CardItem = ({ image, desription, price }) => {
-  const [color, setColor] = useState(false);
   return (
     <div className="flex items-center justify-center bg-white">
       <div className="w-full p-2 ">
         <div className="bg-white rounded-lg shadow hover:shadow-md">
-          <div className="relative overflow-hidden group">
-            {/* <a href="/" className=" outline-none>">
-              <img
-                src={image}
-                alt=""
-                className="transition-all rounded-sm group-hover:scale-125"
-              />
-            </a> */}
+          {/* <div className="relative overflow-hidden group">
+           
             <div
               className="h-[290px] p-4 transition-all bg-gray-400 bg-center bg-no-repeat bg-cover group-hover:scale-105 "
               style={{
@@ -293,6 +287,31 @@ const CardItem = ({ image, desription, price }) => {
                 </button>
               </div>
             </div>
+          </div> */}
+          <div className="relative overflow-hidden rounded-t cursor-pointer group ">
+            <img
+              src={image}
+              alt=""
+              className="object-cover w-full h-full group-hover:scale-105 "
+            />
+            <span className="absolute z-10 invisible w-8 transition-all opacity-0 cursor-pointer right-5 top-5 group-hover:opacity-100 group-hover:visible">
+              <svg
+                width="42"
+                height="38"
+                viewBox="0 0 42 38"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="max-w-full"
+              >
+                <path
+                  d="M0.166626 11.5C0.166108 8.47984 1.37993 5.58633 3.53499 3.47045C5.69005 1.35458 8.60534 0.19405 11.625 0.249979C15.2027 0.230979 18.6166 1.74826 21 4.41665C23.3833 1.74826 26.7972 0.230979 30.375 0.249979C33.3946 0.19405 36.3099 1.35458 38.4649 3.47045C40.62 5.58633 41.8338 8.47984 41.8333 11.5C41.8333 22.6583 28.5437 31.0833 21 37.75C13.4729 31.0271 0.166626 22.6666 0.166626 11.5Z"
+                  fill="#fff"
+                />
+              </svg>
+            </span>
+            <button className="absolute flex items-center justify-center invisible px-4 py-4 text-sm font-medium text-black transition-all bg-white rounded-lg opacity-0 bottom-4 -translate-x-2/4 left-2/4 group-hover:opacity-100 group-hover:visible hover:bg-black hover:text-white">
+              <BsCartPlus size={"20px"} className="mr-2" /> Add to cart
+            </button>
           </div>
 
           <div className="px-2 pt-3 text-start ">
