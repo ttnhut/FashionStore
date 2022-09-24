@@ -14,7 +14,7 @@ const Footer = () => {
     <div>
       <footer className=' bottom-0 bg-cover  text-white bg-[#212121]  bg-no-repeat  bg-center bg-[url("https://file.hstatic.net/200000397757/file/wd-footer-bg_bd337816b3d64003b9fa0ca6f4b8b3fa.png")]'>
         <div className="py-[45px]">
-          <div className="container w-[1300px] px-[15px]  mx-auto relative">
+          <div className="container w-full xl:w-[1300px] lg:w-[1044px] md:w-[788px] px-[15px]  mx-auto relative">
             <div className="flex flex-wrap justify-between">
               <div className="p-[15]  mb-[15px]">
                 <div className="title-footer ">

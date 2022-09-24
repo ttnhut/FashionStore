@@ -13,25 +13,50 @@ const Content = () => {
     arrows: true,
     prevArrow: <GrPrevious />,
     nextArrow: <GrNext />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <main className="pt-10 min-h-[60.5vh]">
       <h1 className="hidden">TALY</h1>
       <section>
-        <div className="min-h-[398px] block cursor-pointer">
+        <div className="block cursor-pointer">
           <a href="/">
             <img
               src="https://file.hstatic.net/1000185342/file/f5_e3642e3ab3b84c92aaef008e06043fad_master.jpg"
               alt=""
-              className="object-cover w-full"
+              className="object-cover w-full "
             />
           </a>
         </div>
       </section>
       <section className="p-8">
-        <div className="container w-[1300px] relative px-4  mr-auto ml-auto">
+        <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px]  relative px-4 ml-auto mr-auto">
           <div className="mb-8 text-center ">
-            <h2 className="flex items-center justify-center mb-1 text-2xl underline">
+            <h2 className="mb-1 text-center underline lg:text-2xl md:text-xl">
               Được ưa thích
             </h2>
           </div>
@@ -96,10 +121,10 @@ const Content = () => {
         </div>
       </section>
       <section className="mb-7">
-        <div className="container w-[1300px] py-[15px] relative  mr-auto ml-auto">
+        <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px] py-[15px] relative  mr-auto ml-auto">
           <div className="mb-[30px]  text-center">
-            <h2 className="flex justify-center mb-1 text-2xl text-center">
-              <span className=" flex items-center text-[22px] uppercase font-medium">
+            <h2 className="flex justify-center mb-1 text-center lg:text-2xl md:text-xl">
+              <span className="font-medium text-center uppercase ">
                 Sản phẩm nổi bật
               </span>
             </h2>
@@ -135,7 +160,7 @@ const Content = () => {
           </ul>
           <div className="tap-reuslt">
             <div className="block ml-6">
-              <div className="-ml-[15px] grid grid-cols-4 gap-[0.5px]">
+              <div className="-ml-[15px] grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-[0.5px]">
                 <CardItem
                   image={
                     "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg"
@@ -260,35 +285,9 @@ const Content = () => {
 const CardItem = ({ image, desription, price }) => {
   return (
     <div className="flex items-center justify-center bg-white">
-      <div className="w-full p-2 ">
+      <div className="p-2 ">
         <div className="bg-white rounded-lg shadow hover:shadow-md">
-          {/* <div className="relative overflow-hidden group">
-           
-            <div
-              className="h-[290px] p-4 transition-all bg-gray-400 bg-center bg-no-repeat bg-cover group-hover:scale-105 "
-              style={{
-                backgroundImage: `url(${image})`,
-              }}
-            >
-              <div className="text-right">
-                <button
-                  onClick={() => setColor(!color)}
-                  className={`p-2  rounded-full ${
-                    color ? "text-red-600" : "text-white"
-                  }`}
-                  style={{ background: "rgba(0,0,0,0.3)" }}
-                >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24">
-                    <path
-                      fill="currentColor"
-                      d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div> */}
-          <div className="relative overflow-hidden rounded-t cursor-pointer group ">
+          <div className="relative max-w-[300px] overflow-hidden rounded-t cursor-pointer group ">
             <img
               src={image}
               alt=""
