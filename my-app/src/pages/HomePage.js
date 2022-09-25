@@ -4,7 +4,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import { BsCartPlus } from "react-icons/bs";
-const Content = () => {
+import Base from "../components/Base";
+const HomePage = () => {
   const settings = {
     infinite: true,
     speed: 500,
@@ -40,7 +41,8 @@ const Content = () => {
     ],
   };
   return (
-    <main className="pt-10 min-h-[60.5vh]">
+    <Base>
+      <main className="pt-10 min-h-[60.5vh]">
       <h1 className="hidden">TALY</h1>
       <section>
         <div className="block cursor-pointer">
@@ -279,6 +281,7 @@ const Content = () => {
         </div>
       </section>
     </main>
+    </Base>
   );
 };
 
@@ -347,4 +350,4 @@ const CardItem = ({ image, desription, price }) => {
     </div>
   );
 };
-export default Content;
+export default HomePage;

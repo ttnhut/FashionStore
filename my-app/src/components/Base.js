@@ -3,11 +3,12 @@ import Header from "../pages/Header";
 
 const Base = ({ children }) => {
   return (
-    <>
+    <div>
+    
       <Header />
       {children}
       <Footer />
-    </>
+    </div>
   );
 };
 
