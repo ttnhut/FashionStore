@@ -1,20 +1,24 @@
 import { Fragment, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Disclosure, Menu } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import ModalCart from "./ModalCart";
+import { Link } from "react-router-dom";
+import { useCart } from "../contexts/cartContext";
 
-const navigation = [
-  { name: "Trang chủ", href: "#", current: false },
-  { name: "Tất cả sản phẩm", href: "#", current: false },
-  { name: "Cửa hàng", href: "#", current: false },
-  // { name: "Calendar", href: "#", current: false },
-];
+// const navigation = [
+//   { name: "Trang chủ", href: "#", current: false },
+//   { name: "Tất cả sản phẩm", href: "#", current: false },
+//   { name: "Cửa hàng", href: "#", current: false },
+//   // { name: "Calendar", href: "#", current: false },
+// ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
+  const { cartItems } = useCart();
+  const cartItemCount = cartItems.length;
   return (
     <>
       <Disclosure
@@ -38,34 +42,41 @@ const Header = () => {
                 </div>
                 <div className="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
                   <div className="flex items-center flex-shrink-0">
-                    <img
-                      className="block w-auto h-8 lg:hidden"
-                      src="https://file.hstatic.net/1000185342/file/logo_tbag_chuan_e0e6d9427a5f4e32b61668dd34b671ce.png"
-                      alt="Your Company"
-                    />
-                    <img
-                      className="hidden w-auto h-8 lg:block"
-                      src="https://file.hstatic.net/1000185342/file/logo_tbag_chuan_e0e6d9427a5f4e32b61668dd34b671ce.png"
-                      alt="Your Company"
-                    />
+                    <Link to="/">
+                      <img
+                        className="block w-auto h-8 lg:hidden"
+                        src="https://file.hstatic.net/1000185342/file/logo_tbag_chuan_e0e6d9427a5f4e32b61668dd34b671ce.png"
+                        alt="Your Company"
+                      />
+                    </Link>
+                    <Link to="/">
+                      <img
+                        className="hidden w-auto h-8 lg:block"
+                        src="https://file.hstatic.net/1000185342/file/logo_tbag_chuan_e0e6d9427a5f4e32b61668dd34b671ce.png"
+                        alt="Your Company"
+                      />
+                    </Link>
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex items-center justify-between space-x-4">
-                      {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? " text-black"
-                              : " hover:text-[#ff6310] ",
-                            "px-3 py-2 rounded-md text-sm font-medium"
-                          )}
-                          aria-current={item.current ? "page" : undefined}
-                        >
-                          {item.name}
-                        </a>
-                      ))}
+                      <Link
+                        to="/"
+                        className="px-3 py-2 text-base hover:text-[#ff6310]"
+                      >
+                        Trang chủ
+                      </Link>
+                      <Link
+                        to=""
+                        className="px-3 py-2 text-base hover:text-[#ff6310]"
+                      >
+                        Tất cả sản phẩm
+                      </Link>
+                      <Link
+                        to=""
+                        className="px-3 py-2 text-base hover:text-[#ff6310]"
+                      >
+                        Cửa hàng
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -134,7 +145,7 @@ const Header = () => {
                       onClick={() => setShowModal(true)}
                     >
                       <div className="absolute top-0 right-0 z-10 bg-black text-white text-xs font-bold px-1 py-0.5 rounded-full">
-                        1
+                        {cartItemCount}
                       </div>
                       <span className="sr-only">View notifications</span>
                       <svg
@@ -171,7 +182,7 @@ const Header = () => {
                         />
                       </Menu.Button>
                     </div>
-                    <Transition
+                    {/* <Transition
                       as={Fragment}
                       enter="transition ease-out duration-100"
                       enterFrom="transform opacity-0 scale-95"
@@ -180,71 +191,35 @@ const Header = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Your Profile
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Sign out
-                            </a>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
+                    </Transition> */}
                   </Menu>
                 </div>
               </div>
             </div>
 
             <Disclosure.Panel className="sm:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1">
-                {navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? "bg-white text-black"
-                        : "text-black  hover:text-[#ff6310]",
-                      "block px-3 py-2 rounded-md text-base font-medium"
-                    )}
-                    aria-current={item.current ? "page" : undefined}
+              <div className="px-2 pt-2 pb-3 space-y-1 ">
+                {/* block px-3 py-2 rounded-md text-base font-medium */}
+                <Disclosure.Button>
+                  <Link
+                    to="/"
+                    className="block text-start px-3 py-2 text-base hover:text-[#ff6310]"
                   >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
+                    Trang chủ
+                  </Link>
+                  <Link
+                    to=""
+                    className="block text-start px-3 py-2 text-base hover:text-[#ff6310]"
+                  >
+                    Tất cả sản phẩm
+                  </Link>
+                  <Link
+                    to=""
+                    className="block text-start px-3 py-2 text-base hover:text-[#ff6310]"
+                  >
+                    Cửa hàng
+                  </Link>
+                </Disclosure.Button>
               </div>
             </Disclosure.Panel>
           </>

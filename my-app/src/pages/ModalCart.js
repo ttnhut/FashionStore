@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { GrClose } from "react-icons/gr";
+import { Link } from "react-router-dom";
+import { useCart } from "../contexts/cartContext";
 
 const ModalCart = ({ open = false, handleClose = () => {} }) => {
-  const [count, setCount] = useState(1);
+  const { cartItems } = useCart();
+  console.log("cartItems: ", cartItems);
+
   return ReactDOM.createPortal(
     <div
       className={`fixed inset-0 z-[999] flex items-center justify-center p-5 modal transition-all duration-500 ${
@@ -36,56 +40,20 @@ const ModalCart = ({ open = false, handleClose = () => {} }) => {
           Giỏ hàng
         </h2>
         <div className="">
-          <ul /*className="relative flex flex-row justify-center p-0 list-none "*/
-          >
-            <li className="flex flex-row ">
-              <div className="max-w-[90px] py-[10px] pr-[10px]  ">
-                <a href="/" className="">
-                  <img
-                    src="https://product.hstatic.net/1000185342/product/z3529552390850_d03bfa735c43c3692799c658f390f3b8_65a748376dd24563b03d6eb8d21bfee1_medium.jpg"
-                    alt=""
-                    className="w-full "
-                  />
-                </a>
+          <ul>
+            {cartItems.length === 0 ? (
+              <div className="w-full mx-auto">
+                <img
+                  src="https://bizweb.sapocdn.net/100/419/232/themes/809377/assets/empty-cart.png?1662538039841"
+                  alt=""
+                  className="h-[200px] mx-auto"
+                />
               </div>
-              <div className="relative  py-[10px] pr-[25px] w-full ">
-                <a
-                  href="/"
-                  className="hover:text-[#ff6310] float-left  w-full  text-[14px] "
-                >
-                  YẾM QUẦN JEAN DÀI GÀI NÚT EO 8624
-                </a>
-                <span className="uppercase text-[12px] float-left w-full text-black opacity-80 mt-[5px] mb-[5px]">
-                  Xanh/s
-                </span>
-                <div className="flex float-left  w-[100px]">
-                  <input
-                    onClick={() => setCount(count - 1)}
-                    type="button"
-                    value="-"
-                    disabled={count === 1}
-                    className="flex bg-white  float-left border border-solid border-[#e1e1e1] cursor-pointer h-[33px] w-[33px]  text-center text-xl  text-black  justify-center items-center "
-                  />
-                  <input
-                    type="text"
-                    value={count}
-                    className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-base text-black  justify-center items-center"
-                  />
-                  <input
-                    type="button"
-                    onClick={() => setCount(count + 1)}
-                    value="+"
-                    className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-xl cursor-pointer text-black  justify-center items-center"
-                  />
-                </div>
-                <span className="block float-left text-[#ff0000] mt-1 ml-[10px]">
-                  369,000₫
-                </span>
-                <span className="absolute cursor-pointer   right-0  w-5 h-5 top-[10px] text-[17px] text-center ">
-                  <GrClose size={"15px"} />
-                </span>
-              </div>
-            </li>
+            ) : (
+              cartItems.map((item) => (
+                <ListItem key={item.id} info={item}></ListItem>
+              ))
+            )}
           </ul>
           <span className="float-left  w-full  border-t  border-solid border-[#e3e5ec]"></span>
         </div>
@@ -96,17 +64,23 @@ const ModalCart = ({ open = false, handleClose = () => {} }) => {
                 Tổng tiền :
               </td>
               <td className="text-[#ff0000] text-lg font-medium float-right p-[10px]">
-                369,000₫
+                {cartItems.reduce(
+                  (previousValue, currentValue) =>
+                    previousValue +
+                    Number(currentValue.price * currentValue.quantity),
+                  0
+                )}{" "}
+                .000đ
               </td>
             </tr>
             <tr>
               <td className="p-[10px]  text-left pl-0 ">
-                <a
-                  href="/"
+                <Link
+                  to="/cart"
                   className="transition-all hover:bg-white hover:text-black  hover:border hover:border-solid hover:border-[#000] uppercase bg-black text-white text-sm py-[15px] px-[10px] relative  w-full  mb-0 inline-block  border border-solid border-[#fff] text-center "
                 >
                   xem giỏ hàng
-                </a>
+                </Link>
               </td>
               <td className="p-[10px]  text-left pl-0 ">
                 <a
@@ -124,5 +98,64 @@ const ModalCart = ({ open = false, handleClose = () => {} }) => {
     document.querySelector("body")
   );
 };
+
+function ListItem({ info: { image, description, price, quantity, id } }) {
+  // const [count, setCount] = useState(1);
+  const { RemoveCart, addToCart, RemoveCartItem } = useCart();
+
+  const item = { image, description, price, quantity, id };
+
+  return (
+    <li className="flex flex-row ">
+      <div className="max-w-[90px] py-[10px] pr-[10px]  ">
+        <a href="/" className="">
+          <img src={image} alt="" className="w-full " />
+        </a>
+      </div>
+      <div className="relative  py-[10px] pr-[25px] w-full ">
+        <a
+          href="/"
+          className="hover:text-[#ff6310] float-left  w-full  text-[14px] "
+        >
+          {description}
+        </a>
+        <span className="uppercase text-[12px] float-left w-full text-black opacity-80 mt-[5px] mb-[5px]">
+          Xanh/s
+        </span>
+        <div className="flex float-left  w-[100px]">
+          <input
+            onClick={() => RemoveCart(item)}
+            type="button"
+            value="-"
+            disabled={quantity === 1}
+            className="flex bg-white  float-left border border-solid border-[#e1e1e1] cursor-pointer h-[33px] w-[33px]  text-center text-xl  text-black  justify-center items-center "
+          />
+          <input
+            type="text"
+            value={quantity}
+            className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-base text-black  justify-center items-center"
+          />
+          <input
+            type="button"
+            onClick={() => addToCart(item)}
+            value="+"
+            className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-xl cursor-pointer text-black  justify-center items-center"
+          />
+        </div>
+
+        <span className="block float-left text-[#ff0000] mt-1 ml-[10px]">
+          {price * quantity}.000đ
+        </span>
+
+        <span
+          className="absolute cursor-pointer   right-0  w-5 h-5 top-[10px] text-[17px] text-center "
+          onClick={() => RemoveCartItem(item)}
+        >
+          <GrClose size={"15px"} />
+        </span>
+      </div>
+    </li>
+  );
+}
 
 export default ModalCart;
