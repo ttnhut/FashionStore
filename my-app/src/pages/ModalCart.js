@@ -104,6 +104,7 @@ function ListItem({ info: { image, description, price, quantity, id } }) {
   const { RemoveCart, addToCart, RemoveCartItem } = useCart();
 
   const item = { image, description, price, quantity, id };
+  console.log("item: ", item);
 
   return (
     <li className="flex flex-row ">
@@ -127,16 +128,19 @@ function ListItem({ info: { image, description, price, quantity, id } }) {
             onClick={() => RemoveCart(item)}
             type="button"
             value="-"
+            readOnly
             disabled={quantity === 1}
             className="flex bg-white  float-left border border-solid border-[#e1e1e1] cursor-pointer h-[33px] w-[33px]  text-center text-xl  text-black  justify-center items-center "
           />
           <input
             type="text"
+            readOnly
             value={quantity}
             className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-base text-black  justify-center items-center"
           />
           <input
             type="button"
+            readOnly
             onClick={() => addToCart(item)}
             value="+"
             className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-xl cursor-pointer text-black  justify-center items-center"
