@@ -1,18 +1,13 @@
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import Cart from "./pages/Cart";
-import { CartProvider } from "./contexts/cartContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 function App() {
   return (
-    <CartProvider>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/cart" element={<Cart />} />
-        </Routes>
-      </div>
-    </CartProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
