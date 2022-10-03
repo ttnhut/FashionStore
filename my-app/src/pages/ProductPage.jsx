@@ -6,8 +6,6 @@ function ProductPage() {
 
   return (
     <div>
-        
-        <Navbar />
         <div className="flex justify-center flex-col md:flex-row">
             <div className="flex flex-1 items-center justify-center">
                 <img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
