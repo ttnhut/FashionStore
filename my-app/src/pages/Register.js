@@ -1,9 +1,73 @@
+import { useEffect, useState } from 'react'
 import Base from '../components/Base'
-
+import { signUp } from '../services/user-service'
+import {toast} from 'react-toastify'
+import classNames from 'classnames'
 const Register=()=>{
-    
+      const inputError = 'shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
+      const inputNormal= 'mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg  focus:ring-0'
+      
+      const [data,setData] = useState({
+        username:"",
+        password:"",
+        confirmPassword:""
+      })
+      const [error,setError] = useState({
+        errors:"",
+        isError:false
+      })
+      
+     
+
+      const handleChange=(event,property)=>{
+        setData({...data,[property]:event.target.value})
+      }
+
+      //submitform
+      const submitForm = (event)=>{
+        event.preventDefault();
+       
+        
+        //data validate
+
+        //call api
+       if(data.password != data.confirmPassword){
+        toast.error("Confirm password is not equal password")
+        
+       }
+       else{
+       
+        signUp(data).then(res=>{
+          console.log("success log")
+          
+          toast.success("User is registered successfully with id " + res.id)
+          setData({
+            username:"",
+            password:"",
+            confirmPassword:""
+            
+          })
+          setError({
+            errors:"",
+            isError:false
+          })
+          
+        })
+        .catch(error=>{
+          console.log("error log")
+          toast.error("Something wrong")
+          setError({
+            errors:error,
+            isError:true
+          })
+        })
+       }
+        
+      }
     return(
+      
        <Base>
+       
        <div className="font-sans">
   <div className="relative min-h-screen flex flex-col sm:justify-center items-center bg-gray-100 ">
     <div className="relative sm:max-w-sm w-full mt-8">
@@ -15,34 +79,46 @@ const Register=()=>{
           className="block mt-3 text-lg text-gray-700 text-center font-bold"
         >
           REGISTRATE
+          
         </label>
-        <form method="#" action="#" className="mt-10">
+        <form onSubmit={submitForm} className="mt-10">
           <div>
             <input
               type="text"
               placeholder="Username"
-              className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg  focus:ring-0"
+              className={classNames({
+                [inputNormal]:error.errors?.response?.data?.username ? false :true,
+                [inputError]:error.errors?.response?.data?.username ? true :false
+              })}
+              id="username"
+              onChange={(e)=>handleChange(e,'username')}
+              value={data.username}
             />
+            <p class="text-red-500 text-xs italic">{error.errors?.response?.data?.username}</p>
           </div>
-          <div className="mt-7">
-            <input
-              type="email"
-              placeholder="Email"
-              className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg  focus:ring-0"
-            />
-          </div>
+          
           <div className="mt-7">
             <input
               type="password"
               placeholder="Password"
-              className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg  focus:ring-0"
+              className={classNames({
+                [inputNormal]:error.errors?.response?.data?.password ? false :true,
+                [inputError]:error.errors?.response?.data?.password ? true :false
+              })}
+              
+              onChange={(e)=>handleChange(e,'password')}
+              value={data.password}
             />
+            <p class="text-red-500 text-xs italic">{error.errors?.response?.data?.password}</p>
           </div>
           <div className="mt-7">
             <input
               type="password"
               placeholder="Confirm password"
               className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg  focus:ring-0"
+              id="confirmpassword"
+              onChange={(e)=>handleChange(e,'confirmPassword')}
+              value={data.confirmPassword}
             />
           </div>
           <div className="mt-7">

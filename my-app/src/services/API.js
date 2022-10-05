@@ -1,10 +1,11 @@
 import axios from "axios"
 
 export let endpoints = {
-    "register":"/api/v1/auth/register/"
-
+    "register":"/auth/register/",
+    "login":"/auth/login/",
+    "categories":"/categories/"
 }
 
 export default axios.create({
-    baseURL:"http://localhost:9090"
+    baseURL:"http://localhost:9091/api/v1"
 })
