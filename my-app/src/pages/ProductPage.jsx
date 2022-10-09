@@ -1,18 +1,40 @@
 import React from 'react'
-import Navbar from '../components/Navbar';
 import Counter from '../components/Counter';
+import Footer from './Footer';
+import Header from './Header';
 
 function ProductPage() {
 
   return (
+    
     <div>
-        
-        <Navbar />
-        <div className="flex justify-center">
-            <div className="flex flex-1 items-center justify-center">
+      <Header/>
+        <div className="flex justify-center mt-20 mb-20">
+            <div className="flex flex-1 items-center justify-center ">
+              
+              <div className="float-left w-72 ml-4 ">
+                <img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+                  alt="product_image"
+                  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md opacity-90 hover:opacity-100"/>
+                <img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+                  alt="product_image"
+                  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md"/>
+                <img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+                  alt="product_image"
+                  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md"/>
+                <img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+                  alt="product_image"
+                  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md"/>
+                <img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+                  alt="product_image"
+                  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md"/>
+              </div>
+
+              <div className="float-right">
                 <img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
                 alt="product_image"
-                className="w-[80%] h-[90%] rounded-lg shadow-md hover:scale-[1.1] ease-in duration-300"/>
+                className=" w-[100%] h-[100%] rounded-lg shadow-md hover:scale-[1.1] ease-in duration-300"/>
+              </div>
             </div>
 
             <div className="flex-[1.3] flex items-center justify-items-start flex-col mt-10">
@@ -50,18 +72,18 @@ function ProductPage() {
               </div>
               
               <div className="flex items-center justify-center">
-                  <button className="btn mt-5 mr-12">
+                  <button className="text-white bg-[#000] rounded-md p-3 mt-5 mr-12 hover:bg-[#fff] hover:text-black">
                     Thêm vào giỏ
                   </button>
 
-                  <button className="btn mt-5 mr-12">
+                  <button className="text-white bg-[#000] rounded-md p-3 mt-5 mr-12  hover:bg-[#fff] hover:text-black ">
                     Mua Ngay
                   </button>
               </div>
-              
-              
+                
             </div>
         </div>
+      <Footer/>
     </div>
   )
 }

@@ -8,7 +8,11 @@ function Counter() {
   }
 
   const handleMole =() =>{
-    setProductOne(productOne-1)
+    if(productOne==0){
+      setProductOne(productOne)
+    }else{
+      setProductOne(productOne-1)
+    }
   }
 
   return (
