@@ -138,11 +138,11 @@ function CartProvider(props) {
     return;
   }
   //remove Cart item
-  function RemoveCartItem(cartItem) {
+  function removeCartItem(cartItem) {
     setCartItems(cartItems.filter((item) => item.id !== cartItem.id));
   }
   //remove increment cart
-  function RemoveCart(cartId) {
+  function removeCart(cartId) {
     const exits = cartItems.find((item) => item.id === cartId.id);
     setCartItems(
       cartItems.map((item) =>
@@ -160,8 +160,8 @@ function CartProvider(props) {
     setData,
     setCartItems,
     addToCart,
-    RemoveCartItem,
-    RemoveCart,
+    removeCartItem,
+    removeCart,
   };
   return <CartContext.Provider value={value} {...props}></CartContext.Provider>;
 }

@@ -6,7 +6,7 @@ import { useCart } from "../contexts/cartContext";
 
 const Cart = () => {
   const { cartItems } = useCart();
-  console.log("cartItems cart: ", cartItems);
+
   const cartItemCount = cartItems.length;
 
   return (
@@ -131,7 +131,7 @@ const Cart = () => {
 function CartListShopping({
   info: { image, description, price, quantity, id },
 }) {
-  const { RemoveCartItem } = useCart();
+  const { removeCartItem, addToCart, removeCart } = useCart();
   const item = { image, description, price, quantity, id };
   return (
     <div className="flex items-center px-6 py-5  border-t border-solid border-[#e5e5e5] ">
@@ -145,7 +145,7 @@ function CartListShopping({
           <span className="text-base font-medium leading-5">{description}</span>
           <span className="text-sm text-red-500">Xanh/S</span>
           <button
-            onClick={() => RemoveCartItem(item)}
+            onClick={() => removeCartItem(item)}
             className="text-sm font-medium text-left underline hover:text-red-400"
           >
             Xóa
@@ -154,21 +154,21 @@ function CartListShopping({
       </div>
       <div className="flex justify-center w-1/5">
         <input
-          // onClick={RemoveCart(item)}
+          onClick={() => removeCart(item)}
           type="button"
           value="-"
-          className={`flex bg-white  float-left border border-solid border-[#e1e1e1]  h-[33px] w-[33px]  text-center text-xl  text-black  justify-center items-center ${
-            quantity === 1 ? "cursor-not-allowed" : "cursor-pointer"
-          } `}
+          disabled={quantity === 1}
+          className="flex bg-white  float-left border border-solid border-[#e1e1e1]  h-[33px] w-[33px]  text-center text-xl  text-black  justify-center items-center cursor-pointer"
         />
         <input
           type="text"
+          readOnly
           value={quantity}
           className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-base text-black  justify-center items-center"
         />
         <input
           type="button"
-          // onClick={() => addToCart(item)}
+          onClick={() => addToCart(item)}
           value="+"
           className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-xl cursor-pointer text-black  justify-center items-center"
         />

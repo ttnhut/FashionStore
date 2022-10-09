@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import { GrClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
@@ -101,10 +101,9 @@ const ModalCart = ({ open = false, handleClose = () => {} }) => {
 
 function ListItem({ info: { image, description, price, quantity, id } }) {
   // const [count, setCount] = useState(1);
-  const { RemoveCart, addToCart, RemoveCartItem } = useCart();
+  const { removeCart, addToCart, removeCartItem } = useCart();
 
   const item = { image, description, price, quantity, id };
-  console.log("item: ", item);
 
   return (
     <li className="flex flex-row ">
@@ -125,10 +124,9 @@ function ListItem({ info: { image, description, price, quantity, id } }) {
         </span>
         <div className="flex float-left  w-[100px]">
           <input
-            onClick={() => RemoveCart(item)}
+            onClick={() => removeCart(item)}
             type="button"
             value="-"
-            readOnly
             disabled={quantity === 1}
             className="flex bg-white  float-left border border-solid border-[#e1e1e1] cursor-pointer h-[33px] w-[33px]  text-center text-xl  text-black  justify-center items-center "
           />
@@ -140,7 +138,6 @@ function ListItem({ info: { image, description, price, quantity, id } }) {
           />
           <input
             type="button"
-            readOnly
             onClick={() => addToCart(item)}
             value="+"
             className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-xl cursor-pointer text-black  justify-center items-center"
@@ -153,7 +150,7 @@ function ListItem({ info: { image, description, price, quantity, id } }) {
 
         <span
           className="absolute cursor-pointer   right-0  w-5 h-5 top-[10px] text-[17px] text-center "
-          onClick={() => RemoveCartItem(item)}
+          onClick={() => removeCartItem(item)}
         >
           <GrClose size={"15px"} />
         </span>

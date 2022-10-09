@@ -1,12 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./contexts/cartContext";
+import Cart from "./pages/Cart";
+import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+// cd
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Register />} />
-      </Routes>
+      <CartProvider>
+        <Routes>
+          {/* <Route path="/" element={<Login />} /> */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </CartProvider>
     </BrowserRouter>
   );
 }
