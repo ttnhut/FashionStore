@@ -4,12 +4,12 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import ModalCart from "./ModalCart";
 import { doLogout, getCurrentUserDetail, isLoggedIn } from "../auth";
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../contexts/cartContext";
 
 const navigation = [
   { name: "Trang chủ", href: "#", current: false },
   { name: "Tất cả sản phẩm", href: "#", current: false },
   { name: "Cửa hàng", href: "#", current: false },
-  // { name: "Calendar", href: "#", current: false },
 ];
 
 function classNames(...classes) {
@@ -20,7 +20,8 @@ const Header = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState(undefined);
-
+  const { cartItems } = useCart();
+  const cartItemCount = cartItems.length;
   useEffect(() => {
     setLogin(isLoggedIn());
     setUser(getCurrentUserDetail());
@@ -69,7 +70,8 @@ const Header = () => {
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex items-center justify-between space-x-4">
                       {navigation.map((item) => (
-                        <a
+                        <Link
+                          to="/"
                           key={item.name}
                           href={item.href}
                           className={classNames(
@@ -81,7 +83,7 @@ const Header = () => {
                           aria-current={item.current ? "page" : undefined}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -151,7 +153,7 @@ const Header = () => {
                       onClick={() => setShowModal(true)}
                     >
                       <div className="absolute top-0 right-0 z-10 bg-black text-white text-xs font-bold px-1 py-0.5 rounded-full">
-                        1
+                        {cartItemCount}
                       </div>
                       <span className="sr-only">View notifications</span>
                       <svg
@@ -189,7 +191,13 @@ const Header = () => {
                           />
                         </Menu.Button>
                       )}
-                      {!login && <Link to={"/login"}>Bạn chưa đăng nhập</Link>}
+                      {!login && (
+                        <Link to={"/login"}>
+                          <button className="p-2 text-sm font-semibold border border-black rounded-lg">
+                            Sign in
+                          </button>
+                        </Link>
+                      )}
                     </div>
                     <Transition
                       as={Fragment}
