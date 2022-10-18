@@ -81,10 +81,10 @@ const HomePage = () => {
               <>
                 <CardItem
               image={
-                "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg"
+                item.image
               }
               desription={item.name}
-              price={"239,000₫"}
+              price={item.price}
             ></CardItem>
               </>
             ))}
@@ -132,118 +132,17 @@ const HomePage = () => {
           <div className="tap-reuslt">
             <div className="block ml-6">
               <div className="-ml-[15px] grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-[0.5px]">
+              {clothesContent?.content.map(item=>(
+              <>
                 <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg"
-                  }
-                  desription="Áo trễ vai 2 tầng bèo Lili"
-                  price={"239,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/img_2697_34d892c4fe064995ba4abff42b0eed25_large.jpg"
-                  }
-                  desription="Áo thun form rộng Enni"
-                  price={"245,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/86e031a0-028c-444f-a58d-e01ef2627003_513ee85ae5234d5ba00d5b05b8476efa_large.jpg"
-                  }
-                  desription="Áo sơ mi tay ngắn viền chỉ Ongy"
-                  price={"219,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/3d5b48d8-7f8c-45e8-9c62-ba2e98fc2375_949b56cebb19461482f4098fb8710d58_large.jpg"
-                  }
-                  desription="Áo ghile len sọc Kena"
-                  price={"319,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/0a90470a-4b73-4c34-a196-139b37e3ec2e_8e3849738561472e94b69c6caa618d09_large.jpg"
-                  }
-                  desription="Áo 2 nơ Sona"
-                  price={"289,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/3d5b48d8-7f8c-45e8-9c62-ba2e98fc2375_949b56cebb19461482f4098fb8710d58_large.jpg"
-                  }
-                  desription="Áo ghile len sọc Kena"
-                  price={"319,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg"
-                  }
-                  desription="Áo trễ vai 2 tầng bèo Lili"
-                  price={"239,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/img_2697_34d892c4fe064995ba4abff42b0eed25_large.jpg"
-                  }
-                  desription="Áo thun form rộng Enni"
-                  price={"245,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg"
-                  }
-                  desription="Áo trễ vai 2 tầng bèo Lili"
-                  price={"239,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/img_2697_34d892c4fe064995ba4abff42b0eed25_large.jpg"
-                  }
-                  desription="Áo thun form rộng Enni"
-                  price={"245,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/86e031a0-028c-444f-a58d-e01ef2627003_513ee85ae5234d5ba00d5b05b8476efa_large.jpg"
-                  }
-                  desription="Áo sơ mi tay ngắn viền chỉ Ongy"
-                  price={"219,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/3d5b48d8-7f8c-45e8-9c62-ba2e98fc2375_949b56cebb19461482f4098fb8710d58_large.jpg"
-                  }
-                  desription="Áo ghile len sọc Kena"
-                  price={"319,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/0a90470a-4b73-4c34-a196-139b37e3ec2e_8e3849738561472e94b69c6caa618d09_large.jpg"
-                  }
-                  desription="Áo 2 nơ Sona"
-                  price={"289,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/3d5b48d8-7f8c-45e8-9c62-ba2e98fc2375_949b56cebb19461482f4098fb8710d58_large.jpg"
-                  }
-                  desription="Áo ghile len sọc Kena"
-                  price={"319,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg"
-                  }
-                  desription="Áo trễ vai 2 tầng bèo Lili"
-                  price={"239,000₫"}
-                ></CardItem>
-                <CardItem
-                  image={
-                    "https://product.hstatic.net/1000185342/product/img_2697_34d892c4fe064995ba4abff42b0eed25_large.jpg"
-                  }
-                  desription="Áo thun form rộng Enni "
-                  price={"245,000₫"}
-                ></CardItem>
+              image={
+                item.image
+              }
+              desription={item.name}
+              price={item.price}
+            ></CardItem>
+              </>
+            ))}
               </div>
             </div>
           </div>
