@@ -11,8 +11,8 @@ import { FiMail } from "react-icons/fi";
 import { SiTiktok, SiZalo } from "react-icons/si";
 const Footer = () => {
   return (
-    <div>
-      <footer className=' bottom-0 bg-cover  text-white bg-[#212121]  bg-no-repeat  bg-center bg-[url("https://file.hstatic.net/200000397757/file/wd-footer-bg_bd337816b3d64003b9fa0ca6f4b8b3fa.png")]'>
+    <div className="-pt-10">
+      <footer className=" bottom-0 bg-cover  text-white bg-gradient-to-r from-purple-300 to-pink-300  bg-no-repeat">
         <div className="py-[45px]">
           <div className="container w-full xl:w-[1300px] lg:w-[1044px] md:w-[788px] px-[15px]  mx-auto relative">
             <div className="flex flex-wrap justify-between">
@@ -31,7 +31,7 @@ const Footer = () => {
                       <ImLocation size={"15px"} className="inline mr-2" />
                       245F Lê Văn Sỹ, Phường 13, Quận Phú Nhuận
                     </li>
-                    <li className="py-[7px] transition-all hover:text-[#ff6310] text-sm">
+                    <li className="py-[7px] transition-all hover:text-[#aa098c] text-sm">
                       {" "}
                       <BsFillTelephoneFill
                         size={"15px"}
@@ -39,7 +39,7 @@ const Footer = () => {
                       />{" "}
                       <a href="/"> 0985.83.24.83</a>
                     </li>
-                    <li className="py-[7px] transition-all hover:text-[#ff6310]  text-sm">
+                    <li className="py-[7px] transition-all hover:text-[#aa098c]  text-sm">
                       <FiMail size={"15px"} className="inline mr-2" />
                       <a href="/"> 0985.83.24.83</a>
                     </li>
@@ -54,10 +54,10 @@ const Footer = () => {
                 </div>
                 <div className="mt-3">
                   <ul className="p-0 list-none ">
-                    <li className="py-[7px] transition-all text-sm hover:text-[#ff6310]">
+                    <li className="py-[7px] transition-all text-sm hover:text-[#aa098c]">
                       <a href="/"> Tìm kiếm</a>
                     </li>
-                    <li className="py-[7px] transition-all  text-sm hover:text-[#ff6310]">
+                    <li className="py-[7px] transition-all  text-sm hover:text-[#aa098c]">
                       {" "}
                       <a href="/"> Thông tin tuyển dụng</a>
                     </li>
@@ -72,13 +72,13 @@ const Footer = () => {
                 </div>
                 <div className="mt-3">
                   <ul className="p-0 list-none ">
-                    <li className="py-[7px] transition-all text-sm hover:text-[#ff6310]">
+                    <li className="py-[7px] transition-all text-sm hover:text-[#aa098c]">
                       <a href="/">Chính sách thanh toán - Giao hàng</a>
                     </li>
-                    <li className="py-[7px] transition-all hover:text-[#ff6310]  text-sm">
+                    <li className="py-[7px] transition-all hover:text-[#aa098c]  text-sm">
                       <a href="/">Chính sách đổi hàng</a>
                     </li>
-                    <li className="py-[7px] transition-all hover:text-[#ff6310]  text-sm">
+                    <li className="py-[7px] transition-all hover:text-[#aa098c]  text-sm">
                       <a href="/">Chính sách bảo mật</a>
                     </li>
                   </ul>
@@ -96,14 +96,14 @@ const Footer = () => {
                   </p>
                   <div>
                     <form className="bg-white rounded-md  h-[45px] leading-[45px] border-none w-full max-w-full  relative">
-                      <div>
+                      <div className="bg-gradient-to-r from-purple-400 to-pink-400 ">
                         <input
                           type="email"
                           placeholder="Email"
-                          className="border-none outline-none w-full pr-[100px] pl-[10px] text-black "
+                          className="border-none outline-none  w-full pr-[100px] pl-[10px] text-black "
                         />
                       </div>
-                      <button className="absolute top-0 right-0 px-2 text-center text-white uppercase bg-black border-none">
+                      <button className="absolute top-0 right-0 px-2 text-center text-white uppercase bg-gradient-to-r from-purple-400 to-pink-400 ">
                         Đăng ký
                       </button>
                     </form>
@@ -160,7 +160,7 @@ const Footer = () => {
                     © Copyright 2022 By
                     <a
                       href="/"
-                      className="no-underline hover:text-[#ff6310] ml-1"
+                      className="no-underline hover:text-[#9f2586] ml-1"
                     >
                       TALY.
                     </a>

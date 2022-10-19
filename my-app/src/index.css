@@ -2,13 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
   body {
     font-family: "Poppins", sans-serif;
-    min-height: 300vh;
+    min-height: fit-content;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
+  #register input{
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none  ;
+  }
+  #register button:first-child{
+    background-color: rgba(5, 153, 227, 0.2);
+    border: none  ;
+  }
+  #register button:last-child{
+    background-color: rgba(227, 5, 5, 0.2);
+    border: none  ;
+  }
+#register{
+  background-color: rgba(239, 239, 239, .3)  ;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+
 }
+
+
+  
+
+
+

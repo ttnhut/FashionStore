@@ -19,7 +19,7 @@ const Header = () => {
     <>
       <Disclosure
         as="nav"
-        className="fixed top-0 w-full left-0 right-0 z-[999] shadow-md  bg-white"
+        className="fixed top-0 w-full left-0 right-0 z-[999] shadow-md  bg-gradient-to-r from-purple-100 to-pink-100"
       >
         {({ open }) => (
           <>
@@ -58,7 +58,7 @@ const Header = () => {
                           className={classNames(
                             item.current
                               ? " text-black"
-                              : " hover:text-[#ff6310] ",
+                              : " hover:text-[#c02d9b] ",
                             "px-3 py-2 rounded-md text-sm font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}
@@ -71,7 +71,7 @@ const Header = () => {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* search */}
-                  <div className="items-center hidden w-[400px] max-w-xs bg-white rounded-md shadow mr-8 lg:flex">
+                  <div className="items-center hidden w-[400px] max-w-xs bg-gradient-to-r from-purple-200 to-pink-200  rounded-md shadow mr-8 lg:flex">
                     <input
                       className="w-full py-3 pl-4 text-sm bg-transparent outline-none "
                       type="text"
