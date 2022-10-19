@@ -1,7 +1,9 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import ModalCart from "./ModalCart";
+import { doLogout, getCurrentUserDetail, isLoggedIn } from "../auth";
+import { Link, useNavigate } from "react-router-dom";
 
 const navigation = [
   { name: "Trang chủ", href: "#", current: false },
@@ -10,16 +12,32 @@ const navigation = [
   // { name: "Calendar", href: "#", current: false },
 ];
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate()
+  const [login,setLogin]=useState(false)
+  const [user,setUser] = useState(undefined)
+
+  useEffect(()=>{
+    setLogin(isLoggedIn())
+    setUser(getCurrentUserDetail())
+  },[login])
+
+  const logOut =()=>{
+    doLogout(()=>{
+      setLogin(false)
+      navigate("/")
+    })
+  }
   return (
     <>
       <Disclosure
         as="nav"
-        className="fixed top-0 w-full left-0 right-0 z-[999] shadow-md  bg-white"
+        className="sticky top-0 w-full left-0 right-0 z-[999] shadow-md  bg-white"
       >
         {({ open }) => (
           <>
@@ -162,7 +180,8 @@ const Header = () => {
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      {login && (
+                        <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="w-8 h-8 rounded-full"
@@ -170,6 +189,10 @@ const Header = () => {
                           alt=""
                         />
                       </Menu.Button>
+                      )}
+                      {!login && (
+                        <Link to={"/login"}>Bạn chưa đăng nhập</Link>
+                      )}
                     </div>
                     <Transition
                       as={Fragment}
@@ -181,17 +204,16 @@ const Header = () => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
+                        
+                        {
+                          login && (
+                             <>
+                              <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Your Profile
-                            </a>
+                            <Link className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )} to={"/user/profile-info"}>{user.username}</Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
@@ -210,6 +232,7 @@ const Header = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <a
+                              onClick={logOut}
                               href="#"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
@@ -220,6 +243,10 @@ const Header = () => {
                             </a>
                           )}
                         </Menu.Item>
+                             </>
+                          )
+                        }
+                       
                       </Menu.Items>
                     </Transition>
                   </Menu>

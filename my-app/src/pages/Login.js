@@ -1,6 +1,47 @@
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 import Base from '../components/Base'
-
+import { login } from '../services/user-service'
+import { doLogin } from '../auth'
+import { useNavigate } from 'react-router-dom'
 const Login=()=>{
+    const [loginDetail,setLoginDetail] = useState({
+      username:"",
+      password:""
+    })
+
+    const navigate = useNavigate()
+
+    const handleChange = (event,property) =>{
+      setLoginDetail({...loginDetail,[property]:event.target.value})
+    }
+
+    const handleFormSubmit = (event)=>{
+      event.preventDefault()
+      if(loginDetail.username.trim() == "" || loginDetail.password.trim() == ""){
+        toast.error("Username or Password is required")
+        return
+      }
+      login(loginDetail).then(data=>{
+        console.log("user login : ")
+        console.log(data)
+
+        doLogin(data,()=>{
+          console.log("login detail is saved to localstorage")
+          navigate("/user/dashboard")
+        })
+
+        toast.success("Login success")
+      }).catch(error=>{
+        console.log(error)
+        if(error.response.status == 400 || error.response.status == 404){
+          toast.error(error.response.data.message)
+        }
+        else{
+          toast.error("Something wrong")
+        }
+      })
+    }
     return(
         <Base>
         <div className="font-sans">
@@ -15,12 +56,15 @@ const Login=()=>{
               >
                 LOGIN
               </label>
-              <form method="#" action="#" className="mt-10">
+              <form onSubmit={handleFormSubmit}>
                 <div>
                   <input
                     type="name"
                     placeholder="Username"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg focus:border-blue-100 focus:ring-0"
+                    value={loginDetail.username}
+                    onChange={(e)=>handleChange(e,'username')}
+                    
                   />
                 </div>
                 <div className="mt-7">
@@ -28,6 +72,8 @@ const Login=()=>{
                     type="password"
                     placeholder="Password"
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg focus:border-blue-100 focus:ring-0"
+                    value={loginDetail.password}
+                    onChange={(e)=>handleChange(e,'password')}
                   />
                 </div>
                 <div className="mt-7 flex">
