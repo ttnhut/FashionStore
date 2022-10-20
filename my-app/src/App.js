@@ -10,6 +10,7 @@ import PrivateRoot from "./components/PrivateRoute";
 import ProfileInfo from "./pages/user-routes/ProfileInfo";
 import { CartProvider } from "./contexts/cartContext";
 import Cart from "./pages/Cart";
+import DashBoard from "./pages/DashBoard";
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
             <Route path="profile-info" element={<ProfileInfo />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
+          <Route path="/dash" element={<DashBoard />} />
         </Routes>
       </CartProvider>
     </BrowserRouter>
