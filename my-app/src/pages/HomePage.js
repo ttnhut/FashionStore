@@ -77,19 +77,7 @@ const HomePage = () => {
                 Được ưa thích
               </h2>
             </div>
-            {/* <Slider {...settings}>
-              {clothesContent?.content.map((item) => (
-                <>
-                  <CardItem
-                    image={
-                      "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg"
-                    }
-                    desription={item.name}
-                    price={"239,000₫"}
-                  ></CardItem>
-                </>
-              ))}
-            </Slider> */}
+
             <Slider {...settings}>
               {data.length >= 0 &&
                 data
@@ -199,7 +187,12 @@ const CardItem = ({ info: { image, description, price, quantity, id } }) => {
 
             <div className="pt-1 pb-2">
               <div className="text-base font-semibold text-red-400">
-                {price}
+                {
+                  (price = price.toLocaleString("vi", {
+                    style: "currency",
+                    currency: "VND",
+                  }))
+                }
               </div>
             </div>
           </div>

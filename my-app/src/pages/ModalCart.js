@@ -6,6 +6,12 @@ import { useCart } from "../contexts/cartContext";
 
 const ModalCart = ({ open = false, handleClose = () => {} }) => {
   const { cartItems } = useCart();
+  let total = cartItems.reduce(
+    (previousValue, currentValue) =>
+      previousValue + Number(currentValue.price * currentValue.quantity),
+    0
+  );
+
   return ReactDOM.createPortal(
     <div
       className={`fixed inset-0 z-[999] flex items-center justify-center p-5 modal transition-all duration-500 ${
@@ -62,13 +68,12 @@ const ModalCart = ({ open = false, handleClose = () => {} }) => {
                 Tổng tiền :
               </td>
               <td className="text-[#ff0000] text-lg font-medium float-right p-[10px]">
-                {cartItems.reduce(
-                  (previousValue, currentValue) =>
-                    previousValue +
-                    Number(currentValue.price * currentValue.quantity),
-                  0
-                )}{" "}
-                .000đ
+                {
+                  (total = total.toLocaleString("vi", {
+                    style: "currency",
+                    currency: "VND",
+                  }))
+                }
               </td>
             </tr>
             <tr>
@@ -101,7 +106,7 @@ function ListItem({ info: { image, description, price, quantity, id } }) {
   const { RemoveCart, addToCart, RemoveCartItem } = useCart();
 
   const item = { image, description, price, quantity, id };
-
+  let calculator = price * quantity;
   return (
     <li className="flex flex-row ">
       <div className="max-w-[90px] py-[10px] pr-[10px]  ">
@@ -142,7 +147,12 @@ function ListItem({ info: { image, description, price, quantity, id } }) {
         </div>
 
         <span className="block float-left text-[#ff0000] mt-1 ml-[10px]">
-          {price * quantity}.000đ
+          {
+            (calculator = calculator.toLocaleString("vi", {
+              style: "currency",
+              currency: "VND",
+            }))
+          }
         </span>
 
         <span

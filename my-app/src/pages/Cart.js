@@ -7,7 +7,11 @@ import { useCart } from "../contexts/cartContext";
 const Cart = () => {
   const { cartItems } = useCart();
   const cartItemCount = cartItems.length;
-
+  let total = cartItems.reduce(
+    (previousValue, currentValue) =>
+      previousValue + Number(currentValue.price * currentValue.quantity),
+    0
+  );
   return (
     <Base>
       <div className="bg-white ">
@@ -70,13 +74,12 @@ const Cart = () => {
               <div className="flex justify-between mt-5 mb-5">
                 <span className="text-xl font-medium ">Tổng tiền:</span>
                 <span className="text-xl font-medium text-[#e70303]">
-                  {cartItems.reduce(
-                    (previousValue, currentValue) =>
-                      previousValue +
-                      currentValue.price * currentValue.quantity,
-                    0
-                  )}{" "}
-                  .000đ
+                  {
+                    (total = total.toLocaleString("vi", {
+                      style: "currency",
+                      currency: "VND",
+                    }))
+                  }
                 </span>
               </div>
               <div className="py-[15px]">
@@ -132,6 +135,7 @@ function CartListShopping({
 }) {
   const { RemoveCartItem, addToCart, RemoveCart } = useCart();
   const item = { image, description, price, quantity, id };
+  let calculator = price * quantity;
   return (
     <div className="flex items-center px-6 py-5  border-t border-solid border-[#e5e5e5] ">
       <div className="flex w-2/5">
@@ -173,9 +177,21 @@ function CartListShopping({
           className="flex  bg-white  float-left border border-solid border-[#e1e1e1] border-l-0 h-[33px] w-[33px]  text-center text-xl cursor-pointer text-black  justify-center items-center"
         />
       </div>
-      <span className="w-1/5 text-sm font-medium text-center">{price}đ</span>
       <span className="w-1/5 text-sm font-medium text-center">
-        {price * quantity}.000đ
+        {
+          (price = price.toLocaleString("vi", {
+            style: "currency",
+            currency: "VND",
+          }))
+        }
+      </span>
+      <span className="w-1/5 text-sm font-medium text-center">
+        {
+          (calculator = calculator.toLocaleString("vi", {
+            style: "currency",
+            currency: "VND",
+          }))
+        }
       </span>
     </div>
   );
