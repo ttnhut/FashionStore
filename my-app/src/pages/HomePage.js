@@ -69,24 +69,18 @@ const HomePage = () => {
               />
             </a>
           </div>
-        </section>
-        <section className="p-8">
-          <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px]  relative px-4 ml-auto mr-auto">
-            <div className="mb-8 text-center ">
-              <h2 className="mb-1 text-center underline lg:text-2xl md:text-xl">
-                Được ưa thích
-              </h2>
-            </div>
 
-            <Slider {...settings}>
-              {data.length >= 0 &&
-                data
-                  .slice(0, 8)
-                  .map((item) => (
-                    <CardItem key={item.id} info={item}></CardItem>
-                  ))}
-            </Slider>
-          </div>
+          <Slider {...settings}>
+            {clothesContent?.content.map((item) => (
+              <>
+                <CardItem
+                  image={item.image}
+                  desription={item.name}
+                  price={item.price}
+                ></CardItem>
+              </>
+            ))}
+          </Slider>
         </section>
         <section className="mb-7">
           <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px] py-[15px] relative  mr-auto ml-auto">
@@ -129,10 +123,15 @@ const HomePage = () => {
             <div className="tap-reuslt">
               <div className="block ml-6">
                 <div className="-ml-[15px] grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-[0.5px]">
-                  {data.length > 0 &&
-                    data.map((item) => (
-                      <CardItem key={item.id} info={item}></CardItem>
-                    ))}
+                  {clothesContent?.content.map((item) => (
+                    <>
+                      <CardItem
+                        image={item.image}
+                        desription={item.name}
+                        price={item.price}
+                      ></CardItem>
+                    </>
+                  ))}
                 </div>
               </div>
             </div>
