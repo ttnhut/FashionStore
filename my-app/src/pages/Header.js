@@ -4,35 +4,35 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import ModalCart from "./ModalCart";
 import { doLogout, getCurrentUserDetail, isLoggedIn } from "../auth";
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../contexts/cartContext";
 
 const navigation = [
   { name: "Trang chủ", href: "#", current: false },
   { name: "Tất cả sản phẩm", href: "#", current: false },
   { name: "Cửa hàng", href: "#", current: false },
-  // { name: "Calendar", href: "#", current: false },
 ];
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate()
-  const [login,setLogin]=useState(false)
-  const [user,setUser] = useState(undefined)
+  const navigate = useNavigate();
+  const [login, setLogin] = useState(false);
+  const [user, setUser] = useState(undefined);
+  const { cartItems } = useCart();
+  const cartItemCount = cartItems.length;
+  useEffect(() => {
+    setLogin(isLoggedIn());
+    setUser(getCurrentUserDetail());
+  }, [login]);
 
-  useEffect(()=>{
-    setLogin(isLoggedIn())
-    setUser(getCurrentUserDetail())
-  },[login])
-
-  const logOut =()=>{
-    doLogout(()=>{
-      setLogin(false)
-      navigate("/")
-    })
-  }
+  const logOut = () => {
+    doLogout(() => {
+      setLogin(false);
+      navigate("/");
+    });
+  };
   return (
     <>
       <Disclosure
@@ -70,7 +70,8 @@ const Header = () => {
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex items-center justify-between space-x-4">
                       {navigation.map((item) => (
-                        <a
+                        <Link
+                          to="/"
                           key={item.name}
                           href={item.href}
                           className={classNames(
@@ -82,7 +83,7 @@ const Header = () => {
                           aria-current={item.current ? "page" : undefined}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -152,7 +153,7 @@ const Header = () => {
                       onClick={() => setShowModal(true)}
                     >
                       <div className="absolute top-0 right-0 z-10 bg-black text-white text-xs font-bold px-1 py-0.5 rounded-full">
-                        1
+                        {cartItemCount}
                       </div>
                       <span className="sr-only">View notifications</span>
                       <svg
@@ -182,16 +183,20 @@ const Header = () => {
                     <div>
                       {login && (
                         <Menu.Button className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span className="sr-only">Open user menu</span>
-                        <img
-                          className="w-8 h-8 rounded-full"
-                          src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
-                          alt=""
-                        />
-                      </Menu.Button>
+                          <span className="sr-only">Open user menu</span>
+                          <img
+                            className="w-8 h-8 rounded-full"
+                            src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
+                            alt=""
+                          />
+                        </Menu.Button>
                       )}
                       {!login && (
-                        <Link to={"/login"}>Bạn chưa đăng nhập</Link>
+                        <Link to={"/login"}>
+                          <button className="p-2 text-sm font-semibold border border-black rounded-lg">
+                            Sign in
+                          </button>
+                        </Link>
                       )}
                     </div>
                     <Transition
@@ -204,49 +209,50 @@ const Header = () => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        
-                        {
-                          login && (
-                             <>
-                              <Menu.Item>
-                          {({ active }) => (
-                            <Link className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )} to={"/user/profile-info"}>{user.username}</Link>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                        {login && (
+                          <>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <Link
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                  to={"/user/profile-info"}
+                                >
+                                  {user.username}
+                                </Link>
                               )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              onClick={logOut}
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="#"
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                >
+                                  Settings
+                                </a>
                               )}
-                            >
-                              Sign out
-                            </a>
-                          )}
-                        </Menu.Item>
-                             </>
-                          )
-                        }
-                       
+                            </Menu.Item>
+                            <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  onClick={logOut}
+                                  href="#"
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                >
+                                  Sign out
+                                </a>
+                              )}
+                            </Menu.Item>
+                          </>
+                        )}
                       </Menu.Items>
                     </Transition>
                   </Menu>

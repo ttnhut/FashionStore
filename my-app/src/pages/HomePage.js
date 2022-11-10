@@ -6,18 +6,20 @@ import { GrNext, GrPrevious } from "react-icons/gr";
 import { BsCartPlus } from "react-icons/bs";
 import Base from "../components/Base";
 import { loadAddClothes } from "../services/clothes-service";
+import { useCart } from "../contexts/cartContext";
 const HomePage = () => {
-
-  const [clothesContent,setClothesContent] = useState(null)
-
-  useEffect(()=>{
-    loadAddClothes().then(res=>{
-      console.log(res)
-      setClothesContent(res)
-    }).catch(error=>{
-      console.log(error)
-    })
-  },[])
+  const [clothesContent, setClothesContent] = useState(null);
+  const { data } = useCart();
+  useEffect(() => {
+    loadAddClothes()
+      .then((res) => {
+        console.log(res);
+        setClothesContent(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const settings = {
     infinite: true,
@@ -55,105 +57,95 @@ const HomePage = () => {
   };
   return (
     <Base>
-      <main className="pt-10 min-h-[60.5vh]">
-      <h1 className="hidden">TALY</h1>
-      <section>
-        <div className="block cursor-pointer">
-          <a href="/">
-            <img
-              src="https://file.hstatic.net/1000185342/file/f5_e3642e3ab3b84c92aaef008e06043fad_master.jpg"
-              alt=""
-              className="object-cover w-full "
-            />
-          </a>
-        </div>
-      </section>
-      <section className="p-8">
-        <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px]  relative px-4 ml-auto mr-auto">
-          <div className="mb-8 text-center ">
-            <h2 className="mb-1 text-center underline lg:text-2xl md:text-xl">
-              Được ưa thích
-            </h2>
+      <main className=" min-h-[60.5vh]">
+        <h1 className="hidden">TALY</h1>
+        <section>
+          <div className="block cursor-pointer">
+            <a href="/">
+              <img
+                src="https://file.hstatic.net/1000185342/file/f5_e3642e3ab3b84c92aaef008e06043fad_master.jpg"
+                alt=""
+                className="object-cover w-full "
+              />
+            </a>
           </div>
+
           <Slider {...settings}>
-            
-            {clothesContent?.content.map(item=>(
+            {clothesContent?.content.map((item) => (
               <>
                 <CardItem
-              image={
-                item.image
-              }
-              desription={item.name}
-              price={item.price}
-            ></CardItem>
+                  image={item.image}
+                  desription={item.name}
+                  price={item.price}
+                ></CardItem>
               </>
             ))}
           </Slider>
-        </div>
-      </section>
-      <section className="mb-7">
-        <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px] py-[15px] relative  mr-auto ml-auto">
-          <div className="mb-[30px]  text-center">
-            <h2 className="flex justify-center mb-1 text-center lg:text-2xl md:text-xl">
-              <span className="font-medium text-center uppercase ">
-                Sản phẩm nổi bật
-              </span>
-            </h2>
-          </div>
-          <ul className="flex flex-wrap pl-0 justify-center  mb-[15px] p-0 list-none">
-            <li className="mb-[10px] mr-[10px] flex">
-              <a
-                href="/"
-                className="text-[#ff6310] text-sm border border-dashed border-[#ff6310] p-[10px] rounded-2xl uppercase"
-              >
-                {" "}
-                top
-              </a>
-            </li>
-            <li className="mb-[10px] mr-[10px] flex">
-              <a
-                href="/"
-                className="text-sm text-black   p-[10px] rounded-2xl uppercase"
-              >
-                {" "}
-                bottom
-              </a>
-            </li>
-            <li className="mb-[10px] mr-[10px] flex">
-              <a
-                href="/"
-                className="text-sm text-black p-[10px] rounded-2xl uppercase"
-              >
-                {" "}
-                Đầm
-              </a>
-            </li>
-          </ul>
-          <div className="tap-reuslt">
-            <div className="block ml-6">
-              <div className="-ml-[15px] grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-[0.5px]">
-              {clothesContent?.content.map(item=>(
-              <>
-                <CardItem
-              image={
-                item.image
-              }
-              desription={item.name}
-              price={item.price}
-            ></CardItem>
-              </>
-            ))}
+        </section>
+        <section className="mb-7">
+          <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px] py-[15px] relative  mr-auto ml-auto">
+            <div className="mb-[30px]  text-center">
+              <h2 className="flex justify-center mb-1 text-center lg:text-2xl md:text-xl">
+                <span className="font-medium text-center uppercase ">
+                  Sản phẩm nổi bật
+                </span>
+              </h2>
+            </div>
+            <ul className="flex flex-wrap pl-0 justify-center  mb-[15px] p-0 list-none">
+              <li className="mb-[10px] mr-[10px] flex">
+                <a
+                  href="/"
+                  className="text-[#ff6310] text-sm border border-dashed border-[#ff6310] p-[10px] rounded-2xl uppercase"
+                >
+                  {" "}
+                  top
+                </a>
+              </li>
+              <li className="mb-[10px] mr-[10px] flex">
+                <a
+                  href="/"
+                  className="text-sm text-black   p-[10px] rounded-2xl uppercase"
+                >
+                  {" "}
+                  bottom
+                </a>
+              </li>
+              <li className="mb-[10px] mr-[10px] flex">
+                <a
+                  href="/"
+                  className="text-sm text-black p-[10px] rounded-2xl uppercase"
+                >
+                  {" "}
+                  Đầm
+                </a>
+              </li>
+            </ul>
+            <div className="tap-reuslt">
+              <div className="block ml-6">
+                <div className="-ml-[15px] grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-[0.5px]">
+                  {clothesContent?.content.map((item) => (
+                    <>
+                      <CardItem
+                        image={item.image}
+                        desription={item.name}
+                        price={item.price}
+                      ></CardItem>
+                    </>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
     </Base>
   );
 };
 
-const CardItem = ({ image, desription, price }) => {
+const CardItem = ({ info: { image, description, price, quantity, id } }) => {
+  const { addToCart } = useCart();
+
+  const item = { image, description, price, quantity, id };
   return (
     <div className="flex items-center justify-center bg-white">
       <div className="p-2 ">
@@ -179,39 +171,29 @@ const CardItem = ({ image, desription, price }) => {
                 />
               </svg>
             </span>
-            <button className="absolute flex items-center justify-center invisible px-4 py-4 text-sm font-medium text-black transition-all bg-white rounded-lg opacity-0 bottom-4 -translate-x-2/4 left-2/4 group-hover:opacity-100 group-hover:visible hover:bg-black hover:text-white">
+            <button
+              onClick={() => addToCart(item)}
+              className="absolute flex items-center justify-center invisible px-4 py-4 text-sm font-medium text-black transition-all bg-white rounded-lg opacity-0 bottom-4 -translate-x-2/4 left-2/4 group-hover:opacity-100 group-hover:visible hover:bg-black hover:text-white"
+            >
               <BsCartPlus size={"20px"} className="mr-2" /> Add to cart
             </button>
           </div>
 
           <div className="px-2 pt-3 text-start ">
             <div>
-              <p className="text-base font-normal ">{desription}</p>
+              <p className="text-base font-normal ">{description}</p>
             </div>
 
             <div className="pt-1 pb-2">
               <div className="text-base font-semibold text-red-400">
-                {price}
+                {
+                  (price = price.toLocaleString("vi", {
+                    style: "currency",
+                    currency: "VND",
+                  }))
+                }
               </div>
             </div>
-            {/* <div className="flex items-center justify-center px-2 pb-1 ">
-              <div className="w-1/2">
-                <button className="block w-full p-1 text-white border rounded-md bg-[#064635] hover:opacity-90">
-                  <svg viewBox="0 0 24 24" className="inline w-4 h-4">
-                    <path
-                      fill="currentColor"
-                      d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z"
-                    />
-                  </svg>{" "}
-                  Chi tiết
-                </button>
-              </div>
-              <div className="w-1/2 p-1 ">
-                <button className="block w-full p-1 text-white bg-red-500 border rounded-md hover:bg-red-400 ">
-                  Thêm vào giỏ
-                </button>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
