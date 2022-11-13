@@ -7,9 +7,95 @@ import { BsCartPlus } from "react-icons/bs";
 import Base from "../components/Base";
 import { loadAddClothes } from "../services/clothes-service";
 import { useCart } from "../contexts/cartContext";
+const fakeData = [
+  {
+    id: 1,
+    image:
+      "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 2,
+    image:
+      "https://product.hstatic.net/1000185342/product/img_2697_34d892c4fe064995ba4abff42b0eed25_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 3,
+    image:
+      "https://product.hstatic.net/1000185342/product/z3524825081196_a9ef1d04515ff76e966264f3d9a2bbc5_ebfc9ad7bb41483d94efee8d55e65671_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 4,
+    image:
+      "https://product.hstatic.net/1000185342/product/z3509895198313_782b45bc7c14e25f87d891ac1bb41b39_97072a597688422c9dbaee9f85b1369a_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 5,
+    image:
+      "https://product.hstatic.net/1000185342/product/z3529867157593_8d918171db8cf2825ba5d25bb189a506_d980e72b60804d1e8fa36f8a5a6f3a79_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 6,
+    image:
+      "https://product.hstatic.net/1000185342/product/2bf549f8-7a55-4e3e-8239-dc88885bbb46_10cc50cfd5364127898ac83dc572f8a0_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 7,
+    image:
+      "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 8,
+    image:
+      "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 9,
+    image:
+      "https://product.hstatic.net/1000185342/product/z3675560354662_20d3868f000f209206650f9f1cae3c8b_e30ea2d1f30a432a999b30d337a65b82_large.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 10,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbHO5fXMEdPas82Ey1HBqQ0-lqewHSsNEmuu0CppFQ&s",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 11,
+    image:
+      "https://i.pinimg.com/736x/34/73/21/34732191453e029a9b5747f286ec5ebb.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+  {
+    id: 12,
+    image: "https://cdn.tgdd.vn/Files/2016/09/22/890362/image002_gghx.jpg",
+    description: "Áo trễ vai 2 tầng bèo Lili",
+    price: 239000,
+  },
+];
+
 const HomePage = () => {
-  const [clothesContent, setClothesContent] = useState(null);
-  const { data } = useCart();
+  const [clothesContent, setClothesContent] = useState(fakeData);
+  console.log("clothesContent: ", clothesContent);
   useEffect(() => {
     loadAddClothes()
       .then((res) => {
@@ -69,19 +155,27 @@ const HomePage = () => {
               />
             </a>
           </div>
-
-          <Slider {...settings}>
-            {clothesContent?.content.map((item) => (
-              <>
-                <CardItem
-                  image={item.image}
-                  desription={item.name}
-                  price={item.price}
-                ></CardItem>
-              </>
-            ))}
-          </Slider>
         </section>
+
+        <section className="p-8">
+          <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px]  relative px-4 ml-auto mr-auto">
+            <div className="mb-8 text-center ">
+              <h2 className="mb-1 text-center underline lg:text-2xl md:text-xl">
+                Được ưa thích
+              </h2>
+            </div>
+
+            <Slider {...settings}>
+              {clothesContent?.length >= 0 &&
+                clothesContent
+                  .slice(0, 8)
+                  .map((item) => (
+                    <CardItem key={item.id} info={item}></CardItem>
+                  ))}
+            </Slider>
+          </div>
+        </section>
+
         <section className="mb-7">
           <div className="container xl:w-[1300px] lg:w-[1044px] md:w-[788px] py-[15px] relative  mr-auto ml-auto">
             <div className="mb-[30px]  text-center">
@@ -123,15 +217,15 @@ const HomePage = () => {
             <div className="tap-reuslt">
               <div className="block ml-6">
                 <div className="-ml-[15px] grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-[0.5px]">
-                  {clothesContent?.content.map((item) => (
+                  {/* {clothesContent?.content?.map((item) => (
                     <>
-                      <CardItem
-                        image={item.image}
-                        desription={item.name}
-                        price={item.price}
-                      ></CardItem>
+                      <CardItem key={item.id} info={item}></CardItem>
                     </>
-                  ))}
+                  ))} */}
+                  {clothesContent?.length > 0 &&
+                    clothesContent?.map((item) => (
+                      <CardItem key={item.id} info={item}></CardItem>
+                    ))}
                 </div>
               </div>
             </div>
@@ -142,10 +236,21 @@ const HomePage = () => {
   );
 };
 
-const CardItem = ({ info: { image, description, price, quantity, id } }) => {
+const CardItem = ({
+  info: { color, image, name, description, price, quantity, id, category_id },
+}) => {
   const { addToCart } = useCart();
 
-  const item = { image, description, price, quantity, id };
+  const item = {
+    color,
+    image,
+    name,
+    description,
+    price,
+    quantity,
+    id,
+    category_id,
+  };
   return (
     <div className="flex items-center justify-center bg-white">
       <div className="p-2 ">
@@ -154,7 +259,7 @@ const CardItem = ({ info: { image, description, price, quantity, id } }) => {
             <img
               src={image}
               alt=""
-              className="object-cover w-full h-full group-hover:scale-105 "
+              className="object-cover w-[300px] h-[300px] group-hover:scale-105 "
             />
             <span className="absolute z-10 invisible w-8 transition-all opacity-0 cursor-pointer right-5 top-5 group-hover:opacity-100 group-hover:visible">
               <svg

@@ -86,12 +86,12 @@ const ModalCart = ({ open = false, handleClose = () => {} }) => {
                 </Link>
               </td>
               <td className="p-[10px]  text-left pl-0 ">
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="transition-all hover:bg-black hover:text-white uppercase bg-white text-black text-sm py-[15px] px-[10px] relative  w-full  mb-0 inline-block  border border-solid border-[#000] text-center "
                 >
-                  thanh toán
-                </a>
+                  Thanh toán
+                </Link>
               </td>
             </tr>
           </tbody>
@@ -111,7 +111,7 @@ function ListItem({ info: { image, description, price, quantity, id } }) {
     <li className="flex flex-row ">
       <div className="max-w-[90px] py-[10px] pr-[10px]  ">
         <a href="/" className="">
-          <img src={image} alt="" className="w-full " />
+          <img src={image} alt="" className="w-[100px] h-[80px] " />
         </a>
       </div>
       <div className="relative  py-[10px] pr-[25px] w-full ">

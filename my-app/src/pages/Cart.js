@@ -142,7 +142,7 @@ function CartListShopping({
         {" "}
         {/* product */}
         <div className="w-20">
-          <img className="object-cover w-full" src={image} alt="" />
+          <img src={image} alt="" className="w-[100px] h-[80px] " />
         </div>
         <div className="flex flex-col justify-between flex-grow ml-4 ">
           <span className="text-base font-medium leading-5">{description}</span>
