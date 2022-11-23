@@ -3,143 +3,230 @@ import Base from '../components/Base'
 const Paypal=()=>{
     return(
         <Base>            
-                <div className="min-h-screen bg-gray-300">
-                    <div className="container mx-auto p-10 max-w-screen-lg">
-                    <div className="bg-white rounded shadow p-8">
-                        {/*  ToastBar  */}
-                        <div className="w-full bg-orange-200 text-yellow-900 px-4 py-2 flex items-center">
-                        <img
-                            src="https://svgsilh.com/svg/151889.svg"
-                            className="w-10 block pr-2"
-                        />
-                        <div className="text-sm">
-                            Congrats you're eligible for a <b>Coupon Code</b> in this order{" "}
-                        </div>
-                        </div>
-                        {/* Order Summary  */}
-                        <div>
-                        <h3 className="text-xl mt-4 font-bold">Order Summary</h3>
-                        {/*     BOX     */}
-                        <div className="border w-full rounded mt-5 flex p-4 justify-between items-center flex-wrap">
-                            <img
-                            src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
-                            className="w-20"
-                            />
-                            <div className="w-2/3">
-                            <h3 className="text-lg font-medium">Áo Mini Cat</h3>
-                            <p className="text-gray-600 text-xs">
-                                Sold by <b>Nhân viên</b>
-                            </p>
-                            <h4 className="text-red-700 text-xs font-bold mt-1">
-                                Only 2 left in stock
-                            </h4>
-                            </div>
-                            <div>
-                            <h4 className="text-3xl font-medium">
-                                <sup className="text-lg text-purple-800">$</sup> 89
-                            </h4>
-                            <h5 className="text-sm font-bold text-purple-800">60% OFF</h5>
-                            </div>
-                            <div className="w-full flex justify-between mt-4">
-                            <button className="text-red-700 hover:bg-red-100 px-2">
-                                DELETE
-                            </button>
-                            <label
-                                className="block uppercase tracking-wide text-gray-700"
-                                htmlFor="grid-first-name"
-                            >
-                                QTY
-                                <select
-                                className="ml-3 text-sm bg-purple-700 border border-purple-200 text-white p-2 rounded leading-tight"
-                                id="grid-state"
-                                >
-                                <option>1</option>
-                                <option>2</option>
-                                </select>
-                            </label>
-                            </div>
-                        </div>
-                        <div className="border w-full rounded mt-5 flex p-4 justify-between items-center flex-wrap">
-                            <img
-                            src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
-                            className="w-20"
-                            />
-                            <div className="w-2/3">
-                            <h3 className="text-lg font-medium">Áo Mini Cat</h3>
-                            <p className="text-gray-600 text-xs">
-                                Sold by <b>Nhân viên</b>
-                            </p>
-                            <h4 className="text-red-700 text-xs font-bold mt-1">
-                                Only 1 left in stock
-                            </h4>
-                            </div>
-                            <div>
-                            <h4 className="text-3xl font-medium">
-                                <sup className="text-lg text-purple-800">$</sup> 20
-                            </h4>
-                            <h5 className="text-sm font-bold text-purple-800">40% OFF</h5>
-                            </div>
-                            <div className="w-full flex justify-between mt-4">
-                            <button className="text-red-700 hover:bg-red-100 px-2">
-                                DELETE
-                            </button>
-                            <label
-                                className="block uppercase tracking-wide text-gray-700"
-                                htmlFor="grid-first-name"
-                            >
-                                QTY
-                                <select
-                                className="ml-3 text-sm bg-purple-700 border border-purple-200 text-white p-2 rounded leading-tight"
-                                id="grid-state"
-                                >
-                                <option>1</option>
-                                <option>2</option>
-                                </select>
-                            </label>
-                            </div>
-                        </div>
-                        </div>
-                        <button className="px-4 py-4 bg-purple-700 text-white w-full mt-3 rounded shadow font-bold hover:bg-purple-900">
-                        PROCEED TO CHECKOUT SCREEN
-                        </button>
-                    </div>
-                    <div className="flex justify-between mt-8 flex-wrap lg:justify-center">
-                        <div className="bg-white rounded shadow p-2 w-full lg:w-2/4">
-                        <div className="w-full bg-orange-200 px-8 py-6">
-                            <h3 className="text-2xl mt-4 font-bold">Price Breakdown</h3>
-                            <div className="flex justify-between mt-3">
-                            <div className="text-xl text-orange-900 font-bold">Amount</div>
-                            <div className="text-xl text-right font-bold ">$102</div>
-                            </div>
-                            <div className="flex justify-between mt-3">
-                            <div className="text-xl text-orange-900 font-bold">VAT (15%)</div>
-                            <div className="text-xl text-right font-bold">$12</div>
-                            </div>
-                            <div className="bg-orange-300 h-1 w-full mt-3" />
-                            <div className="flex justify-between mt-3">
-                            <div className="text-xl text-orange-900 font-bold">
-                                Total Amount
-                            </div>
-                            <div className="text-2xl text-orange-900 font-bold">$114</div>
-                            </div>
-                            <button className="px-4 py-4 bg-purple-700 text-white w-full mt-3 rounded shadow font-bold hover:bg-purple- 900">
-                            {" "}
-                            CHECKOUT
-                            </button>
-                        </div>
-                        </div>
-                        <div className="bg-white rounded shadow px-10 py-6 w-full mt-4 flex flex-wrap justify-center lg:w-2/4 lg:ml-3">
-                        <div className="pr-8">
-                            <h3 className="text-2xl mt-4 font-bold text-purple-900">
-                            Thank You So Much
-                            </h3>
-                            
-                        </div>
-                        
-                        </div>
-                    </div>
-                    </div>
+                <>
+  
+  <div className="container p-12 mx-auto">
+    <div className="flex flex-col w-full px-0 mx-auto md:flex-row">
+      <div className="flex flex-col md:w-full">
+        <h2 className="mb-4 font-bold md:text-xl text-heading ">
+          Shipping Address
+        </h2>
+        <form className="justify-center w-full mx-auto" method="post" action="">
+          <div className="">
+            <div className="space-x-0 lg:flex lg:space-x-4">
+              <div className="w-full lg:w-1/2">
+                <label
+                  htmlFor="firstName"
+                  className="block mb-3 text-sm font-semibold text-gray-500"
+                >
+                  First Name
+                </label>
+                <input
+                  name="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+              <div className="w-full lg:w-1/2 ">
+                <label
+                  htmlFor="firstName"
+                  className="block mb-3 text-sm font-semibold text-gray-500"
+                >
+                  Last Name
+                </label>
+                <input
+                  name="Last Name"
+                  type="text"
+                  placeholder="Last Name"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+            </div>
+            <div className="mt-4">
+              <div className="w-full">
+                <label
+                  htmlFor="Email"
+                  className="block mb-3 text-sm font-semibold text-gray-500"
+                >
+                  Email
+                </label>
+                <input
+                  name="Last Name"
+                  type="text"
+                  placeholder="Email"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+            </div>
+            <div className="mt-4">
+              <div className="w-full">
+                <label
+                  htmlFor="Address"
+                  className="block mb-3 text-sm font-semibold text-gray-500"
+                >
+                  Address
+                </label>
+                <textarea
+                  className="w-full px-4 py-3 text-xs border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  name="Address"
+                  cols={20}
+                  rows={4}
+                  placeholder="Address"
+                  defaultValue={""}
+                />
+              </div>
+            </div>
+            <div className="space-x-0 lg:flex lg:space-x-4">
+              <div className="w-full lg:w-1/2">
+                <label
+                  htmlFor="city"
+                  className="block mb-3 text-sm font-semibold text-gray-500"
+                >
+                  City
+                </label>
+                <input
+                  name="city"
+                  type="text"
+                  placeholder="City"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+              <div className="w-full lg:w-1/2 ">
+                <label
+                  htmlFor="postcode"
+                  className="block mb-3 text-sm font-semibold text-gray-500"
+                >
+                  Postcode
+                </label>
+                <input
+                  name="postcode"
+                  type="text"
+                  placeholder="Post Code"
+                  className="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+            </div>
+            <div className="flex items-center mt-4">
+              <label className="flex items-center text-sm group text-heading">
+                <input
+                  type="checkbox"
+                  className="w-5 h-5 border border-gray-300 rounded focus:outline-none focus:ring-1"
+                />
+                <span className="ml-2">
+                  Save this information for next time
+                </span>
+              </label>
+            </div>
+            <div className="relative pt-3 xl:pt-6">
+              <label
+                htmlFor="note"
+                className="block mb-3 text-sm font-semibold text-gray-500"
+              >
+                {" "}
+                Notes (Optional)
+              </label>
+              <textarea
+                name="note"
+                className="flex items-center w-full px-4 py-3 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
+                rows={4}
+                placeholder="Notes for delivery"
+                defaultValue={""}
+              />
+            </div>
+            <div className="mt-4">
+              <button className="w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900">
+                Process
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div className="flex flex-col w-full ml-0 lg:ml-12 lg:w-2/5">
+        <div className="pt-12 md:pt-0 2xl:ps-4">
+          <h2 className="text-xl font-bold">CÁC SP ĐÃ ĐẶT</h2>
+          <div className="mt-8">
+            <div className="flex flex-col space-y-4">
+              <div className="flex space-x-4">
+                <div>
+                  <img
+                    src="https://source.unsplash.com/user/erondu/1600x900"
+                    alt="image"
+                    className="w-60"
+                  />
                 </div>
+                <div>
+                  <h2 className="text-xl font-bold">Tên SP</h2>
+                  <p className="text-sm">màu sắc</p>
+                  <span className="text-red-600">Price</span> $20
+                </div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="flex space-x-4">
+                <div>
+                  <img
+                    src="https://source.unsplash.com/collection/190727/1600x900"
+                    alt="image"
+                    className="w-60"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold">Tên SP</h2>
+                  <p className="text-sm">màu sắc</p>
+                  <span className="text-red-600">Price</span> $20
+                </div>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex p-4 mt-4">
+            <h2 className="text-xl font-bold">HÓA ĐƠN</h2>
+          </div>
+          <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Subtotal<span className="ml-2">$40.00</span>
+          </div>
+          <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Shipping Tax<span className="ml-2">$10</span>
+          </div>
+          <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Total<span className="ml-2">$50.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</>
+
 
         </Base>
     )
