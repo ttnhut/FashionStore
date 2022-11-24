@@ -8,6 +8,7 @@ import {ToastContainer} from 'react-toastify'
 import UserDashBoard from "./pages/user-routes/UserDashBoard";
 import PrivateRoot from "./components/PrivateRoute";
 import ProfileInfo from "./pages/user-routes/ProfileInfo";
+import PostPage from "./pages/PostPage";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
           <Route path="dashboard" element={<UserDashBoard />} />
           <Route path="profile-info" element={<ProfileInfo />} />
         </Route>
+        <Route path="/clothes/:id" element={<PostPage />} />
       </Routes>
     </BrowserRouter>
   );

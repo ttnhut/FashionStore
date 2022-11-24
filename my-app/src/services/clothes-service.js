@@ -6,6 +6,10 @@ export const createClothes = (data)=>{
     .concat(endpoints["clothes"]),data).then(res=>res.data)
 }
 
-export const loadAddClothes = ()=>{
-    return API.get(endpoints["clothes"]).then(res=>res.data)
+export const loadAddClothes = (pageNumber,pageSize)=>{
+    return API.get(`${endpoints["clothes"]}?pageNumber=${pageNumber}&pageSize=${pageSize}`).then(res=>res.data)
+}
+
+export const loadClothes = (id)=>{
+    return API.get(`${endpoints["clothes"]}${id}`).then(res=>res.data)
 }

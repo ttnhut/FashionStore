@@ -6,17 +6,21 @@ import { GrNext, GrPrevious } from "react-icons/gr";
 import { BsCartPlus } from "react-icons/bs";
 import Base from "../components/Base";
 import { loadAddClothes } from "../services/clothes-service";
+import { toast } from 'react-toastify'
+import { Link } from "react-router-dom";
 const HomePage = () => {
 
-  const [clothesContent,setClothesContent] = useState(null)
+  const [clothesContent,setClothesContent] = useState({
+    content:[],
+    totalPages:"",
+    totalElements:"",
+    pageSize:"",
+    lastPage:false,
+    pageNumber:""
+  })
 
   useEffect(()=>{
-    loadAddClothes().then(res=>{
-      console.log(res)
-      setClothesContent(res)
-    }).catch(error=>{
-      console.log(error)
-    })
+    changePage(0)
   },[])
 
   const settings = {
@@ -53,6 +57,21 @@ const HomePage = () => {
       },
     ],
   };
+
+  const changePage = (pageNumber=0,pageSize=6)=>{
+    if(pageNumber > clothesContent.pageNumber && clothesContent.lastPage) 
+      return
+    if(pageNumber < clothesContent.pageNumber && clothesContent.pageNumber==0) 
+      return
+
+    loadAddClothes(pageNumber,pageSize).then(res=>{
+      console.log(res)
+      setClothesContent(res)
+      window.scroll(0,0)
+    }).catch(error=>{
+      toast.error("Load Clothes Error")
+    })
+  }
   return (
     <Base>
       <main className="pt-10 min-h-[60.5vh]">
@@ -79,13 +98,15 @@ const HomePage = () => {
             
             {clothesContent?.content.map(item=>(
               <>
+                <Link to={"/clothes/" + item.id}>
                 <CardItem
-              image={
-                item.image
-              }
-              desription={item.name}
-              price={item.price}
+                    image={
+                      item.image
+                    }
+                    desription={item.name}
+                    price={item.price}
             ></CardItem>
+                </Link>
               </>
             ))}
           </Slider>
@@ -134,17 +155,55 @@ const HomePage = () => {
               <div className="-ml-[15px] grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-[0.5px]">
               {clothesContent?.content.map(item=>(
               <>
-                <CardItem
-              image={
-                item.image
-              }
-              desription={item.name}
-              price={item.price}
-            ></CardItem>
+                <Link to={"/clothes/" + item.id}>
+                    <CardItem
+                      image={
+                        item.image
+                      }
+                      desription={item.name}
+                      price={item.price}
+                    ></CardItem>
+                </Link>
               </>
             ))}
               </div>
             </div>
+            <nav aria-label="Page navigation example">
+  <ul className="inline-flex -space-x-px">
+    <li onClick={()=>changePage(clothesContent.pageNumber -1)}>
+      <a
+       
+        href="#"
+        className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+      >
+        Previous
+      </a>
+    </li>
+    
+      {
+        [...Array(clothesContent.totalPages)].map((item,index)=>(
+          <li key={index} onClick={()=>changePage(index)}>
+              <a
+                
+                href="#"
+                className="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              >
+                {index+1}
+              </a>
+          </li>
+        ))
+      }
+    <li onClick={()=>changePage(clothesContent.pageNumber+1)} >
+      <a
+        href="#"
+        className="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+      >
+        Next
+      </a>
+    </li>
+  </ul>
+</nav>
+
           </div>
         </div>
       </section>
