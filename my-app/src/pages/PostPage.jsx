@@ -20,86 +20,85 @@ const PostPage = ()=>{
         })
      },[])
 
-     const check = ()=>{
-        let obj = document.querySelectorAll(".img-wrap")
-            obj.forEach(i=>{
-                i.setAttribute("background-image","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEPl5IY18q9sr-spjollQKw-ELewasrnKUXQ&usqp=CAU")
-            })
-     }
+     
 
     return (
         <Base>
         {
      	    (clothes) && (
               
-                <div class="section-fluid-main">
-                     
-		<div class="section">
-	      	<div class="info-wrap mob-margin">
-	      		<p class="title-up">{clothes.name}</p>
-	      		<h2>{clothes.category.name}</h2>
-	      		<h4>{clothes.price} VNĐ</h4>	
-	      		<div class="section-fluid">
-	      			<input class="desc-btn" type="radio" id="desc-1" name="desc-btn" checked/>
-	      			
-	      			<input class="desc-btn" type="radio" id="desc-2" name="desc-btn"/>
-	      			<label for="desc-2">Details</label> 
-		      		<div class="section-fluid desc-sec accor-1">
-		      			<p>{clothes.description}</p>
-		      		</div>	
-		      		<div class="section-fluid desc-sec accor-2">
-			      		<div class="section-inline">
-			      			<p><span>76</span>cm<br/>Lenght</p>
-			      		</div>	
-			      		<div class="section-inline">
-			      			<p><span>68</span>cm<br/>Width</p>
-			      		</div>
-			      		<div class="section-inline">
-			      			<p><span>87</span>cm<br/>Height</p>
-			      		</div>
-			      		<div class="section-inline">
-			      			<p><span>10</span>kg<br/>Weight</p>
-			      		</div>
-		      		</div>	
-	      		</div>	
-	      		<h5>Choose upholstery:</h5>
-	      	</div>
-	      	<div class="clearfix"></div>
-	      	<input class="color-btn for-color-1" type="radio" id="color-1" name="color-btn" checked/>
-	      	<label class="first-color" for="color-1"></label> 
-	      	<input class="color-btn for-color-2" type="radio" id="color-2" name="color-btn"/>
-	      	<label class="color-2" for="color-2"></label> 
-	      	<input class="color-btn for-color-3" type="radio" id="color-3" name="color-btn"/>
-	      	<label class="color-3" for="color-3"></label> 
-	      	<input class="color-btn for-color-4" type="radio" id="color-4" name="color-btn"/>
-	      	<label class="color-4" for="color-4"></label> 
-	      	<input class="color-btn for-color-5" type="radio" id="color-5" name="color-btn"/>
-	      	<label class="color-5" for="color-5"></label> 
-	      	<input class="color-btn for-color-6" type="radio" id="color-6" name="color-btn"/>
-	      	<label class="color-6" for="color-6"></label> 
-	      	<div class="clearfix"></div>
-	      	<div class="info-wrap">
-				<a href="#" class="btn"><i class="uil uil-shopping-cart icon"></i> Add To Cart</a>
-	      	</div>
-	      	<div class="img-wrap chair-1"></div>
-	      	<div class="img-wrap chair-2"></div>	
-	      	<div class="img-wrap chair-3"></div>
-	      	<div class="img-wrap chair-4"></div>
-	      	<div class="img-wrap chair-5"></div>
-	      	<div class="img-wrap chair-6"></div>		
-	      	<div class="back-color"></div>	
-	      	<div class="back-color chair-2"></div>	
-	      	<div class="back-color chair-3"></div>	
-	      	<div class="back-color chair-4"></div>	
-	      	<div class="back-color chair-5"></div>	
-	      	<div class="back-color chair-6"></div>	
-
-			
-				<img src={clothes.image} alt="" />
-		
-		</div>
-        {check()}
-	</div>
+				<div className="flex justify-center mt-20 mb-20">
+				<div className="flex flex-1 items-center justify-center ">
+				  
+				  <div className="float-left w-72 ml-4 ">
+					<img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+					  alt="product_image"
+					  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md opacity-90 hover:opacity-100"/>
+					<img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+					  alt="product_image"
+					  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md"/>
+					<img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+					  alt="product_image"
+					  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md"/>
+					<img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+					  alt="product_image"
+					  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md"/>
+					{/* <img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+					  alt="product_image"
+					  className="h-20 my-2 cursor-pointer block rounded-lg shadow-md"/> */}
+				  </div>
+	
+				  <div className="float-right">
+					<img src="https://product.hstatic.net/1000185342/product/z3532539262041_392bf61850d8547d955ba852c2b33a66_57047d07965845ef990d9d5240b99153_1024x1024.jpg"
+					alt="product_image"
+					className=" w-[100%] h-[100%] rounded-lg shadow-md hover:scale-[1.1] ease-in duration-300"/>
+				  </div>
+				</div>
+	
+				<div className="flex-[1.3] flex items-center justify-items-start flex-col mt-10">
+				  <h1 className="title text-[40px]">{clothes?.name}</h1>
+				  <h3 className="title text-[40px]">{clothes?.description}</h3>
+				  <p className="pr-[4rem] text-justify mt-4 text-[24px]"> <b className="text-[#000]">Thương Hiệu:</b> khác | 
+					  <b className="text-[#000] hover:text-[#dc2626]"> Loại: </b> {clothes?.category.name} | <b className="text-[#000]">MSP:</b>{clothes?.id} </p>
+	
+				  <div className="flex items-center justify-center">
+					  <p className="mt-7 text-2xl font-bold"> Giá: <b className="text-[#dc2626]"> {clothes?.price}</b> </p>
+					  <p className="mt-7 text-2xl font-bold ml-3">Tình Trạng: <b className="text-[#dc2626]">Còn Hàng</b> </p>
+				  </div>
+				  
+				  {/*color variant */}
+	
+				  <div className="flex text-2xl mt-3 text-[#000] font-bold">
+					color: 
+					  {"  " +clothes?.color}
+				  </div>
+	
+				  <div className="mt-3 text-2xl">
+					Size
+					<select className="ml-2 border-2">
+					  <option select disabled> Chọn</option>
+					  <option> S</option>
+					  <option> M </option>
+					  <option> L</option>
+					</select>
+				  </div>
+	
+				  <div className="mt-5">
+					
+				  </div>
+				  
+				  <div className="flex items-center justify-center">
+					  <button className="text-white bg-[#000] rounded-md p-3 mt-5 mr-12 hover:bg-[#fff] hover:text-black">
+						Thêm vào giỏ
+					  </button>
+	
+					  <button className="text-white bg-[#000] rounded-md p-3 mt-5 mr-12  hover:bg-[#fff] hover:text-black ">
+						Mua Ngay
+					  </button>
+				  </div>
+					
+				</div>
+			</div>
             )
             }
         </Base>
