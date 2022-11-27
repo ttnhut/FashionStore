@@ -56,8 +56,9 @@ const PostPage = ()=>{
 				</div>
 	
 				<div className="flex-[1.3] flex items-center justify-items-start flex-col mt-10">
-				  <h1 className="title text-[40px]">{clothes?.name}</h1>
-				  <h3 className="title text-[40px]">{clothes?.description}</h3>
+				<div dangerouslySetInnerHTML={{__html: `<h1 className="title text-[40px]">${clothes?.name}</h1>`}}></div>
+				<div dangerouslySetInnerHTML={{__html: `<h3 className="title text-[40px]">${clothes?.description}</h3>`}}></div>
+				 
 				  <p className="pr-[4rem] text-justify mt-4 text-[24px]"> <b className="text-[#000]">Thương Hiệu:</b> khác | 
 					  <b className="text-[#000] hover:text-[#dc2626]"> Loại: </b> {clothes?.category.name} | <b className="text-[#000]">MSP:</b>{clothes?.id} </p>
 	

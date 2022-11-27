@@ -10,11 +10,14 @@ import PrivateRoot from "./components/PrivateRoute";
 import ProfileInfo from "./pages/user-routes/ProfileInfo";
 import { CartProvider } from "./contexts/cartContext";
 import Cart from "./pages/Cart";
-import DashBoard from "./pages/DashBoard";
+import DashBoard from "./pages/user-routes/DashBoard";
 import PostPage from "./pages/PostPage";
 import UserProvider from "./contexts/UserProvider";
+import Payment from "./pages/user-routes/Payment";
+import CartDataProvider from "./contexts/CartDataProvider";
 function App() {
   return (
+    <CartDataProvider>
     <UserProvider>
     <BrowserRouter>
       <ToastContainer position="bottom-center" />
@@ -24,16 +27,20 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/user" element={<PrivateRoot />}>
-            <Route path="dashboard" element={<UserDashBoard />} />
+            
             <Route path="profile-info" element={<ProfileInfo />} />
+            <Route path="payment" element={<Payment/>}/>
+            <Route path="dashboard" element={<DashBoard/>}/>
           </Route>
           <Route path="/cart" element={<Cart />} />
-          <Route path="/dash" element={<DashBoard />} />
+         
           <Route path="/clothes/:id" element={<PostPage/>} />
+          
         </Routes>
       </CartProvider>
     </BrowserRouter>
     </UserProvider>
+    </CartDataProvider>
   );
 }
 

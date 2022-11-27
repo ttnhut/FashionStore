@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Base from "../components/Base";
 import { TiArrowBack } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import { useCart } from "../contexts/cartContext";
+import cartDataContext from "../contexts/cartDataContext";
 
 const Cart = () => {
   const { cartItems } = useCart();
+  const cartData = useContext(cartDataContext)
+  cartData.setCart(cartItems)
   const cartItemCount = cartItems.length;
   let total = cartItems.reduce(
     (previousValue, currentValue) =>
@@ -111,9 +114,11 @@ const Cart = () => {
               </div>
 
               <div className="">
-                <button className="w-full py-3 text-base font-medium text-white bg-black rounded">
-                  Thanh toán ngay
-                </button>
+                <Link to={"/user/payment"}>
+                    <button className="w-full py-3 text-base font-medium text-white bg-black rounded">
+                      Thanh toán ngay
+                    </button>
+                </Link>
                 <Link
                   to="/"
                   className="flex items-center justify-center mt-3 text-base font-medium text-black hover:text-[#ff6310]"
