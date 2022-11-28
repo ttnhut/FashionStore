@@ -1,4 +1,4 @@
-import AddCategory from "../../components/AddCategory"
+import AddCategory from "../../components/AddCat"
 import AddPost from "../../components/AddPost"
 import Base from "../../components/Base"
 

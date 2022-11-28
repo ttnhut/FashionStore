@@ -15,6 +15,8 @@ import PostPage from "./pages/PostPage";
 import UserProvider from "./contexts/UserProvider";
 import Payment from "./pages/user-routes/Payment";
 import CartDataProvider from "./contexts/CartDataProvider";
+import AddProduct from "./pages/AddProduct";
+import AddCategory from "./pages/AddCategory";
 function App() {
   return (
     <CartDataProvider>
@@ -31,6 +33,8 @@ function App() {
             <Route path="profile-info" element={<ProfileInfo />} />
             <Route path="payment" element={<Payment/>}/>
             <Route path="dashboard" element={<DashBoard/>}/>
+            <Route path="dashboard/addproduct" element={<AddProduct/>}/>
+            <Route path="dashboard/addcategory" element={<AddCategory/>}/>
           </Route>
           <Route path="/cart" element={<Cart />} />
          
