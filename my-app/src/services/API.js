@@ -5,7 +5,8 @@ export let endpoints = {
     "register":"/auth/register/",
     "login":"/auth/login/",
     "categories":"/categories/",
-    "clothes":"/clothes/"
+    "clothes":"/clothes/",
+    "users":"/users/"
 }
 
 export default axios.create({

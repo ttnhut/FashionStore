@@ -32,7 +32,7 @@ const DashboardAside = ()=>{
             </li>
             <li>
               <Link
-                to={"/user/dashboard/addproduct"}
+                to={"/user/dashboard/usermanager"}
                 className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4"
               >
                 <svg
@@ -45,12 +45,12 @@ const DashboardAside = ()=>{
                 >
                   <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z" />
                 </svg>
-                Quản lý sản phẩm
+                Quản lý người dùng
               </Link>
             </li>
             <li>
               <Link
-                to={"/user/dashboard/addcategory"}
+                to={"/user/dashboard/categorymanager"}
                 className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4"
               >
                 <svg
@@ -67,8 +67,8 @@ const DashboardAside = ()=>{
               </Link>
             </li>
             <li>
-              <a
-                href="javascript:void(0)"
+              <Link
+                to={"/user/dashboard/productmanager"}
                 className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4"
               >
                 <svg
@@ -81,8 +81,8 @@ const DashboardAside = ()=>{
                 >
                   <path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                 </svg>
-                  Quản lý đơn hàng
-              </a>
+                  Quản lý sản phẩm
+              </Link>
             </li>
           </ul>
         </div>

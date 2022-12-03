@@ -5,7 +5,7 @@ import userContext from "../contexts/userContext"
 
 const DashboardHeader = ()=>{
     const userContextData = useContext(userContext)
-  const navigate = useNavigate
+  const navigate = useNavigate()
   
 
   const handleLogout = ()=>{
@@ -33,7 +33,7 @@ const DashboardHeader = ()=>{
             </span>
           </button>
         </div>
-        <div className="text-lg font-bold">Today's Plan</div>
+        
         <div>
           <button
             type="button"

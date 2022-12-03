@@ -17,6 +17,13 @@ import Payment from "./pages/user-routes/Payment";
 import CartDataProvider from "./contexts/CartDataProvider";
 import AddProduct from "./pages/AddProduct";
 import AddCategory from "./pages/AddCategory";
+import UserManager from "./pages/UserManager";
+import CategoryManagerComponent from "./components/CategoryManagerComponent";
+import EditCategory from "./components/EditCat";
+import PostManagerComponent from "./components/PostManagerComponent";
+import CategoryManager from "./pages/CategoryManager";
+import PostManager from "./pages/PostManager";
+import EditProduct from "./components/EditProduct";
 function App() {
   return (
     <CartDataProvider>
@@ -33,8 +40,15 @@ function App() {
             <Route path="profile-info" element={<ProfileInfo />} />
             <Route path="payment" element={<Payment/>}/>
             <Route path="dashboard" element={<DashBoard/>}/>
-            <Route path="dashboard/addproduct" element={<AddProduct/>}/>
-            <Route path="dashboard/addcategory" element={<AddCategory/>}/>
+            {/* Category Dashboard */}
+            <Route path="dashboard/categorymanager" element={<CategoryManager/>}/>
+            <Route path="dashboard/categorymanager/addcategory" element={<AddCategory/>}/>
+            <Route path="dashboard/categorymanager/edit/:id" element={<EditCategory/>}/>
+            {/* Product Dashboard */}
+            <Route path="dashboard/productmanager" element={<PostManager/>}/>
+            <Route path="dashboard/productmanager/edit/:id" element={<EditProduct/>}/>
+            {/* User Dashboard */}
+            <Route path="dashboard/usermanager" element={<UserManager/>}/>
           </Route>
           <Route path="/cart" element={<Cart />} />
          

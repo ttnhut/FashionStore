@@ -13,3 +13,14 @@ export const loadAddClothes = (pageNumber,pageSize)=>{
 export const loadClothes = (id)=>{
     return API.get(`${endpoints["clothes"]}${id}`).then(res=>res.data)
 }
+
+export const deleteClothes = (id)=>{
+    return privateAxios.delete(`${endpoints["clothes"]}${id}`).then(res=>res.data)
+}
+
+export const loadSingleCLothes = (id)=>{
+    return API.get(`${endpoints["clothes"]}${id}`).then(res=>res.data)
+}
+export const editClothes = (id,clothes)=>{
+    return privateAxios.put(`${endpoints["clothes"]}${id}`,clothes).then(res=>res.data)
+}
