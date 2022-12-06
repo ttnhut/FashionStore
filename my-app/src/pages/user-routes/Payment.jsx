@@ -5,7 +5,11 @@ import Base from "../../components/Base"
 import cartDataContext from "../../contexts/cartDataContext"
 import { useCartDataContext } from "../../contexts/CartDataProvider"
 import { toast } from 'react-toastify'
+import { addOrder } from "../../services/order-service"
+import userContext from "../../contexts/userContext"
+import { addOrderDetail } from "../../services/orderdetail-service"
 const Payment = ()=>{
+  const userContextData = useContext(userContext)
   const cartData = useCartDataContext()
   let total = cartData.cart.reduce(
     (previousValue, currentValue) =>
@@ -16,7 +20,16 @@ const Payment = ()=>{
       console.log(cartData.cart)
     },[cartData.cart])
     const handlePayment = ()=>{
-        toast.success("Thanh toan thanh cong")
+       
+        addOrder(userContextData.user.data.user.id).then(res=>{
+          return res
+        })
+        .then(res=>{
+          cartData.cart.forEach(item=>{
+            addOrderDetail(res.id,item.id,item).then(res=>{console.log(res)})
+          })
+          toast.success("Thanh toán thành công")
+        })
     }
     return (
         <Base>           

@@ -340,7 +340,7 @@ const HomePage = () => {
 };
 
 const CardItem = ({
-  info: { color, image, name, description, price, quantity, id, category_id },
+  info: { color, image, name, description, price, quantity, id, category },
 }) => {
   const { addToCart } = useCart();
 
@@ -352,7 +352,7 @@ const CardItem = ({
     price,
     quantity,
     id,
-    category_id,
+    category,
   };
   return (
     <div className="flex items-center justify-center bg-white">

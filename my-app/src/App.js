@@ -24,6 +24,11 @@ import PostManagerComponent from "./components/PostManagerComponent";
 import CategoryManager from "./pages/CategoryManager";
 import PostManager from "./pages/PostManager";
 import EditProduct from "./components/EditProduct";
+import OrderManagerComponent from "./components/OrderManagerComponent";
+import OrderManager from "./pages/OrderManager";
+import OrderComponent from "./components/OrderComponent";
+import Order from "./pages/Order";
+import StatsComponent from "./components/StatsComponent";
 function App() {
   return (
     <CartDataProvider>
@@ -47,8 +52,14 @@ function App() {
             {/* Product Dashboard */}
             <Route path="dashboard/productmanager" element={<PostManager/>}/>
             <Route path="dashboard/productmanager/edit/:id" element={<EditProduct/>}/>
+            <Route path="dashboard/productmanager/addproduct" element={<AddProduct/>}/>
             {/* User Dashboard */}
             <Route path="dashboard/usermanager" element={<UserManager/>}/>
+            {/* Order Dashboard */}
+            <Route path="dashboard/ordermanager" element={<OrderManager/>}/>
+            <Route path="dashboard/ordermanager/order/:id" element={<Order/>}/>
+            {/* Statistic */}
+            
           </Route>
           <Route path="/cart" element={<Cart />} />
          

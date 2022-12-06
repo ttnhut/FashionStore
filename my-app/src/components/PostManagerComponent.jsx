@@ -71,12 +71,12 @@ const PostManagerComponent = ()=>{
           />
         </div>
         <div className="flex items-center py-2">
-          <a
-            href=""
+          <Link
+            to={"/user/dashboard/productmanager/addproduct"}
             className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
           >
             Thêm mới sản phẩm
-          </a>
+          </Link>
         </div>
       </div>
       <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">

@@ -17,7 +17,8 @@ const AddPost = ()=>{
         quantity:"",
         color:"",
         image:"",
-        categoryId:""
+        categoryId:"",
+        price:""
     })
 
     useEffect(()=>{
@@ -123,6 +124,15 @@ const AddPost = ()=>{
                     className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg focus:border-blue-100 focus:ring-0"
                     onChange={fieldChanged}
                     name="color"
+                  />
+                </div>
+                <div className="mt-7">
+                  <input
+                    type="number"
+                    placeholder="Giá.."
+                    className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg focus:border-blue-100 focus:ring-0"
+                    onChange={fieldChanged}
+                    name="price"
                   />
                 </div>
                 <div className="mt-7">

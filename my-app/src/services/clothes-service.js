@@ -24,3 +24,8 @@ export const loadSingleCLothes = (id)=>{
 export const editClothes = (id,clothes)=>{
     return privateAxios.put(`${endpoints["clothes"]}${id}`,clothes).then(res=>res.data)
 }
+
+export const getClothesByCategory = (id)=>{
+    return API.get(`${endpoints["categories"]+id}${endpoints["clothes"]}`).then(res=>res.data)
+}
+

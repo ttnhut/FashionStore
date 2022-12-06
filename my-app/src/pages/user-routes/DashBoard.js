@@ -4,6 +4,7 @@ import { doLogout } from "../../auth";
 import AddPost from "../../components/AddPost";
 import Base from "../../components/Base";
 import DashboardBase from "../../components/DashboardBase";
+import StatsComponent from "../../components/StatsComponent";
 import { useCart } from "../../contexts/cartContext";
 import userContext from "../../contexts/userContext";
 const DashBoard = () => {
@@ -25,7 +26,8 @@ const DashBoard = () => {
     <>
         <DashboardBase>
         <main className="ml-60 pt-16 max-h-screen overflow-auto">
-          Trang quản lý
+        
+          <StatsComponent/>
         </main>
         </DashboardBase>
   
